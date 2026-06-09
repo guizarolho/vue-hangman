@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import type { GameManager } from '@/game/GameManager'
+import { inject, ref } from 'vue'
 const selected = ref('')
+const gameManager = inject<GameManager>('game')
+
 const keyboardRows: string[][] = [
   ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
   ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
@@ -9,6 +12,12 @@ const keyboardRows: string[][] = [
 
 function selectChar(char: string) {
   selected.value = char
+}
+
+function guess() {
+  if (!gameManager || !selected.value) return
+  gameManager.guess(selected.value)
+  console.log(`GUESS ${selected.value}`)
 }
 </script>
 
@@ -19,5 +28,7 @@ function selectChar(char: string) {
         {{ char }}
       </button>
     </div>
+    <button @click="guess">Enter</button>
+    <button @click="selectChar('')">Backspace</button>
   </div>
 </template>

@@ -6,7 +6,7 @@ export class GameManager {
 
   constructor(secretWord: string) {
     this.gameState = {
-      secretWord: secretWord.toUpperCase(),
+      secretWord: secretWord,
 
       guessedLetters: new Set(),
 
