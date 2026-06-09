@@ -25,15 +25,36 @@ export class GameManager {
     }
   }
 
-  guess(letter: string): boolean {
+  guess(letter: string) {
+    if (this.gameState.gameOver) return
+    if (this.gameState.guessedLetters.has(letter)) return
+
     this.gameState.guessedLetters.add(letter)
+
     if (this.gameState.rightLetters.has(letter)) {
       this.gameState.rightGuesses += 1
-      return true
     } else {
       this.gameState.maxErrors -= 1
-      return false
     }
+
+    if (this.checkCondition()) {
+      this.gameState.gameOver = true
+      this.gameOver()
+    }
+  }
+
+  checkCondition(): boolean {
+    if (this.gameState.rightGuesses >= this.gameState.rightLetters.size) {
+      this.gameState.victory = true
+      return true
+    }
+
+    if (this.gameState.maxErrors <= 0) {
+      this.gameState.victory = false
+      return true
+    }
+
+    return false
   }
 
   getMaskedWord(): string {
@@ -46,11 +67,11 @@ export class GameManager {
     return this.gameState.maxHints
   }
 
-  gameOver(): string {
+  gameOver() {
     if (this.gameState.victory) {
-      return VICTORY_MESSAGE
+      console.log(VICTORY_MESSAGE)
     } else {
-      return DEFEAT_MESSAGE
+      console.log(DEFEAT_MESSAGE)
     }
   }
 }

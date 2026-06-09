@@ -5,7 +5,7 @@ import GameKeyboard from './components/GameKeyboard.vue'
 import { GameManager } from './game/GameManager.ts'
 import { provide } from 'vue'
 
-const secrets = ['king', 'queen', 'jack', 'joker']
+const secrets = ['KING', 'QUEEN', 'JACK', 'JOKER']
 const game = new GameManager(secrets[0] ?? '')
 provide('game', game)
 </script>

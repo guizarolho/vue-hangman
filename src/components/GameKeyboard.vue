@@ -17,7 +17,6 @@ function selectChar(char: string) {
 function guess() {
   if (!gameManager || !selected.value) return
   gameManager.guess(selected.value)
-  console.log(`GUESS ${selected.value}`)
 }
 </script>
 
