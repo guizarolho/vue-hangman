@@ -3,7 +3,7 @@ import GameHeader from './components/GameHeader.vue'
 import GameTile from './components/GameTile.vue'
 import GameKeyboard from './components/GameKeyboard.vue'
 
-const secrets = ['test', 'queen', 'jack', 'joker']
+const secrets = ['king', 'queen', 'jack', 'joker']
 </script>
 
 <template>
