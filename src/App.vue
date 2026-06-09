@@ -2,6 +2,8 @@
 import GameHeader from './components/GameHeader.vue'
 import GameTile from './components/GameTile.vue'
 import GameKeyboard from './components/GameKeyboard.vue'
+import GameModal from './components/GameModal.vue'
+
 import { GameManager } from './game/GameManager.ts'
 import { provide } from 'vue'
 
@@ -20,6 +22,7 @@ provide('game', game)
       :hidden="false"
     />
   </div>
+  <GameModal :show="false" :victory="false" message="" />
   <GameKeyboard />
 </template>
 
