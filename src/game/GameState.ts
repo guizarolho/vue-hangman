@@ -1,4 +1,4 @@
-export interface gameState {
+export interface GameState {
   secretWord: string
   guessedLetters: Set<string>
   wrongLetters: Set<string>
