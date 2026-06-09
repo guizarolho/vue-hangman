@@ -8,7 +8,7 @@ const secrets = ['test', 'queen', 'jack', 'joker']
 
 <template>
   <GameHeader />
-  <div class="word__container" style="display: flex; flex-direction: row">
+  <div class="main__container" style="display: flex; flex-direction: row">
     <GameTile v-for="(char, index) in [...(secrets[0] ?? '')]" :key="index" :letter="char" />
   </div>
   <GameKeyboard />
