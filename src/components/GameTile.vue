@@ -5,7 +5,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div>
-    <h1>{{ props.letter }}</h1>
+  <div class="char__container">
+    <h1 class="char">{{ props.letter }}</h1>
   </div>
 </template>
