@@ -9,7 +9,12 @@ const secrets = ['king', 'queen', 'jack', 'joker']
 <template>
   <GameHeader />
   <div class="main__container" style="display: flex; flex-direction: row">
-    <GameTile v-for="(char, index) in [...(secrets[0] ?? '')]" :key="index" :letter="char" />
+    <GameTile
+      v-for="(char, index) in [...(secrets[0] ?? '')]"
+      :key="index"
+      :letter="char"
+      :hidden="false"
+    />
   </div>
   <GameKeyboard />
 </template>
