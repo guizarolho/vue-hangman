@@ -66,7 +66,7 @@ export class GameManager {
   }
 
   gameOver() {
-    if (this.Victory) {
+    if (this.Victory.value) {
       console.log(VICTORY_MESSAGE)
     } else {
       console.log(DEFEAT_MESSAGE)

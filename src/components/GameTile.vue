@@ -10,3 +10,12 @@ const props = defineProps<{
     <h1 class="tile__char">{{ props.letter }}</h1>
   </div>
 </template>
+
+<style scoped>
+.tile__container__invisible {
+  background: rgba(231, 7, 7, 0.7);
+}
+.tile__container__visible {
+  background: rgba(52, 231, 7, 0.7);
+}
+</style>

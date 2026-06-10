@@ -2,7 +2,7 @@
 import type { GameManager } from '@/game/GameManager'
 import { inject, ref } from 'vue'
 const selected = ref('')
-const gameManager = inject<GameManager>('game')
+const gameManager = inject<GameManager>('game')!
 
 const keyboardRows: string[][] = [
   ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
@@ -23,7 +23,12 @@ function guess() {
 <template>
   <div class="keyboard__container">
     <div v-for="(row, index) in keyboardRows" :key="`row-${index}`" class="keyboard__row">
-      <button v-for="char in row" :key="char" @click="selectChar(char)" class="keyboard__button">
+      <button
+        v-for="char in row"
+        :key="char"
+        @click="selectChar(char)"
+        :class="`keyboard__button__${gameManager.GuessedLetters.has(char) ? 'invisible' : 'visible'}`"
+      >
         {{ char }}
       </button>
     </div>

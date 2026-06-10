@@ -5,10 +5,22 @@ import GameKeyboard from './components/GameKeyboard.vue'
 import GameModal from './components/GameModal.vue'
 
 import { GameManager } from './game/GameManager.ts'
-import { provide } from 'vue'
+import { provide, ref, watch } from 'vue'
 
 const secrets = ['KING', 'QUEEN', 'JACK', 'JOKER']
 const gameManager = new GameManager(secrets[0] ?? '')
+const showModal = ref(false)
+
+// https://vuejs.org/guide/essentials/watchers
+watch(
+  () => gameManager.GameOver.value,
+  (value) => {
+    if (value) {
+      showModal.value = true
+      console.log('game over')
+    }
+  },
+)
 provide('game', gameManager)
 </script>
 
@@ -22,7 +34,7 @@ provide('game', gameManager)
       :hidden="!gameManager.GuessedLetters.has(char)"
     />
   </div>
-  <GameModal :show="gameManager.GameOver.value" :victory="gameManager.Victory.value" />
+  <GameModal :show="showModal" :victory="gameManager.Victory.value" @close="showModal = false" />
   <GameKeyboard />
 </template>
 
