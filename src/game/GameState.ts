@@ -1,6 +1,5 @@
 export interface GameState {
   secretWord: string
-  guessedLetters: Set<string>
   rightLetters: Set<string>
 
   rightGuesses: number

@@ -1,17 +1,16 @@
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import type { GameState } from './GameState'
 import { DEFEAT_MESSAGE, MAX_ERRORS, MAX_HINTS, VICTORY_MESSAGE } from '@/utils/consts'
 
 export class GameManager {
   private gameState: GameState
-  public GameOver: boolean = false
-  public Victory: boolean = false
+  public GameOver = ref<boolean>(false)
+  public Victory = ref<boolean>(false)
+  public GuessedLetters = reactive(new Set())
 
   constructor(secretWord: string) {
     this.gameState = reactive({
       secretWord: secretWord,
-
-      guessedLetters: new Set(),
 
       rightLetters: new Set(secretWord),
 
@@ -25,10 +24,10 @@ export class GameManager {
   }
 
   guess(letter: string) {
-    if (this.GameOver) return
-    if (this.gameState.guessedLetters.has(letter)) return
+    if (this.GameOver.value === true) return
+    if (this.GuessedLetters.has(letter)) return
 
-    this.gameState.guessedLetters.add(letter)
+    this.GuessedLetters.add(letter)
 
     if (this.gameState.rightLetters.has(letter)) {
       this.gameState.rightGuesses += 1
@@ -37,19 +36,19 @@ export class GameManager {
     }
 
     if (this.checkCondition()) {
-      this.GameOver = true
+      this.GameOver.value = true
       this.gameOver()
     }
   }
 
   checkCondition(): boolean {
     if (this.gameState.rightGuesses >= this.gameState.rightLetters.size) {
-      this.Victory = true
+      this.Victory.value = true
       return true
     }
 
     if (this.gameState.maxErrors <= 0) {
-      this.Victory = false
+      this.Victory.value = false
       return true
     }
 
@@ -58,7 +57,7 @@ export class GameManager {
 
   getMaskedWord(): string {
     return [...this.gameState.secretWord]
-      .map((letter) => (this.gameState.guessedLetters.has(letter) ? letter : '_'))
+      .map((letter) => (this.GuessedLetters.has(letter) ? letter : '_'))
       .join(' ')
   }
 

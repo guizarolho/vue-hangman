@@ -9,7 +9,7 @@ import { provide } from 'vue'
 
 const secrets = ['KING', 'QUEEN', 'JACK', 'JOKER']
 const gameManager = new GameManager(secrets[0] ?? '')
-provide('game', gameManager.getState())
+provide('game', gameManager)
 </script>
 
 <template>
@@ -19,10 +19,10 @@ provide('game', gameManager.getState())
       v-for="(char, index) in [...(secrets[0] ?? '')]"
       :key="index"
       :letter="char"
-      :hidden="false"
+      :hidden="!gameManager.GuessedLetters.has(char)"
     />
   </div>
-  <GameModal :show="gameManager.GameOver" :victory="gameManager.Victory" message="" />
+  <GameModal :show="gameManager.GameOver.value" :victory="gameManager.Victory.value" message="" />
   <GameKeyboard />
 </template>
 
