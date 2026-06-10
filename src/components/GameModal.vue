@@ -8,8 +8,8 @@ defineProps<{
 }>()
 
 const emit = defineEmits<{
+  share: []
   close: []
-  restart: []
 }>()
 </script>
 
@@ -23,7 +23,7 @@ const emit = defineEmits<{
       <p>{{ message }}</p>
 
       <div class="modal__actions">
-        <button @click="emit('restart')">Jogar Novamente</button>
+        <button @click="emit('share')">Compartilhar</button>
 
         <button @click="emit('close')">Fechar</button>
       </div>

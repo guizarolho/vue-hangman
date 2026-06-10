@@ -8,8 +8,8 @@ import { GameManager } from './game/GameManager.ts'
 import { provide } from 'vue'
 
 const secrets = ['KING', 'QUEEN', 'JACK', 'JOKER']
-const game = new GameManager(secrets[0] ?? '')
-provide('game', game)
+const gameManager = new GameManager(secrets[0] ?? '')
+provide('game', gameManager.getState())
 </script>
 
 <template>
@@ -22,7 +22,7 @@ provide('game', game)
       :hidden="false"
     />
   </div>
-  <GameModal :show="false" :victory="false" message="" />
+  <GameModal :show="gameManager.GameOver" :victory="gameManager.Victory" message="" />
   <GameKeyboard />
 </template>
 

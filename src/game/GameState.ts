@@ -8,9 +8,5 @@ export interface GameState {
 
   usedHints: number
   maxHints: number
-
-  gameOver: boolean
-  victory: boolean
-
   resetTimer: number
 }

@@ -1,11 +1,14 @@
+import { reactive } from 'vue'
 import type { GameState } from './GameState'
 import { DEFEAT_MESSAGE, MAX_ERRORS, MAX_HINTS, VICTORY_MESSAGE } from '@/utils/consts'
 
 export class GameManager {
   private gameState: GameState
+  public GameOver: boolean = false
+  public Victory: boolean = false
 
   constructor(secretWord: string) {
-    this.gameState = {
+    this.gameState = reactive({
       secretWord: secretWord,
 
       guessedLetters: new Set(),
@@ -17,16 +20,12 @@ export class GameManager {
 
       usedHints: 0,
       rightGuesses: 0,
-
-      gameOver: false,
-      victory: false,
-
       resetTimer: 0,
-    }
+    })
   }
 
   guess(letter: string) {
-    if (this.gameState.gameOver) return
+    if (this.GameOver) return
     if (this.gameState.guessedLetters.has(letter)) return
 
     this.gameState.guessedLetters.add(letter)
@@ -38,19 +37,19 @@ export class GameManager {
     }
 
     if (this.checkCondition()) {
-      this.gameState.gameOver = true
+      this.GameOver = true
       this.gameOver()
     }
   }
 
   checkCondition(): boolean {
     if (this.gameState.rightGuesses >= this.gameState.rightLetters.size) {
-      this.gameState.victory = true
+      this.Victory = true
       return true
     }
 
     if (this.gameState.maxErrors <= 0) {
-      this.gameState.victory = false
+      this.Victory = false
       return true
     }
 
@@ -68,10 +67,14 @@ export class GameManager {
   }
 
   gameOver() {
-    if (this.gameState.victory) {
+    if (this.Victory) {
       console.log(VICTORY_MESSAGE)
     } else {
       console.log(DEFEAT_MESSAGE)
     }
+  }
+
+  getState() {
+    return this.gameState
   }
 }
