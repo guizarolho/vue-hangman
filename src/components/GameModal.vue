@@ -4,7 +4,6 @@ import { DEFEAT_MESSAGE, VICTORY_MESSAGE } from '@/utils/consts'
 defineProps<{
   show: boolean
   victory: boolean
-  message: string
 }>()
 
 const emit = defineEmits<{
@@ -14,14 +13,11 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <div v-if="show" class="modal-overlay">
-    <div class="modal">
-      <h1>
+  <div v-if="show" class="modal__container">
+    <div class="modal__message">
+      <h1 class="modal__title">
         {{ victory ? VICTORY_MESSAGE : DEFEAT_MESSAGE }}
       </h1>
-
-      <p>{{ message }}</p>
-
       <div class="modal__actions">
         <button @click="emit('share')">Compartilhar</button>
 

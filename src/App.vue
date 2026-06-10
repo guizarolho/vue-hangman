@@ -22,7 +22,7 @@ provide('game', gameManager)
       :hidden="!gameManager.GuessedLetters.has(char)"
     />
   </div>
-  <GameModal :show="gameManager.GameOver.value" :victory="gameManager.Victory.value" message="" />
+  <GameModal :show="gameManager.GameOver.value" :victory="gameManager.Victory.value" />
   <GameKeyboard />
 </template>
 
