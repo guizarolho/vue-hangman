@@ -3,7 +3,7 @@ import type { GameManager } from '@/game/GameManager'
 import { inject, ref } from 'vue'
 const selected = ref('')
 const gameManager = inject<GameManager>('game')!
-const emit = defineEmits(['popup'])
+const emit = defineEmits(['open-gameover'])
 
 const keyboardRows: string[][] = [
   ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
@@ -24,7 +24,7 @@ function guess() {
 
 function checkGameover() {
   if (gameManager.GameOver.value) {
-    emit('popup')
+    emit('open-gameover')
     return
   }
 }

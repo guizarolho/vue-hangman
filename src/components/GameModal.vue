@@ -6,13 +6,13 @@ defineProps<{
   victory: boolean
 }>()
 
-const emit = defineEmits(['share', 'close'])
+const emit = defineEmits(['share', 'close-gameover'])
 </script>
 
 <template>
   <div v-if="show" class="modal__container">
     <div class="modal__message">
-      <h1 class="modal__title" @click.self="emit('close')">
+      <h1 class="modal__title" @click.self="emit('close-gameover')">
         {{ victory ? VICTORY_MESSAGE : DEFEAT_MESSAGE }}
       </h1>
       <div class="modal__actions">
