@@ -48,6 +48,7 @@ export class GameManager {
 
     if (this.checkCondition()) {
       this.GameOver.value = true
+      this.gameStats.gamesPlayed += 1
       this.gameOver()
     }
   }
@@ -55,11 +56,13 @@ export class GameManager {
   checkCondition(): boolean {
     if (this.gameState.rightGuesses >= this.gameState.rightLetters.size) {
       this.Victory.value = true
+      this.gameStats.wins += 1
       return true
     }
 
     if (this.gameState.maxErrors <= 0) {
       this.Victory.value = false
+      this.gameStats.losses += 1
       return true
     }
 
