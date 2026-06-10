@@ -46,3 +46,12 @@ function checkGameover() {
     <button @click="selectChar('')">Backspace</button>
   </div>
 </template>
+
+<style scoped>
+.keyboard__button--invisible {
+  background: rgba(88, 82, 82, 0.7);
+}
+.keyboard__button--visible {
+  background: rgba(207, 194, 194, 0.7);
+}
+</style>
