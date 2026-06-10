@@ -26,16 +26,18 @@ provide('game', gameManager)
 
 <template>
   <GameHeader />
-  <div class="main__container" style="display: flex; flex-direction: row">
-    <GameTile
-      v-for="(char, index) in [...(secrets[0] ?? '')]"
-      :key="index"
-      :letter="char"
-      :hidden="!gameManager.GuessedLetters.has(char)"
-    />
+  <div class="game__container">
+    <div class="word__container" style="display: flex; flex-direction: row">
+      <GameTile
+        v-for="(char, index) in [...(secrets[0] ?? '')]"
+        :key="index"
+        :letter="char"
+        :hidden="!gameManager.GuessedLetters.has(char)"
+      />
+    </div>
+    <GameModal :show="showModal" :victory="gameManager.Victory.value" @close="showModal = false" />
+    <GameKeyboard @popup="showModal = true" />
   </div>
-  <GameModal :show="showModal" :victory="gameManager.Victory.value" @close="showModal = false" />
-  <GameKeyboard />
 </template>
 
 <style scoped></style>

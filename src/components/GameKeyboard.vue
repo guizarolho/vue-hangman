@@ -3,6 +3,7 @@ import type { GameManager } from '@/game/GameManager'
 import { inject, ref } from 'vue'
 const selected = ref('')
 const gameManager = inject<GameManager>('game')!
+const emit = defineEmits(['popup'])
 
 const keyboardRows: string[][] = [
   ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
@@ -11,12 +12,21 @@ const keyboardRows: string[][] = [
 ]
 
 function selectChar(char: string) {
+  checkGameover()
   selected.value = char
 }
 
 function guess() {
   if (!gameManager || !selected.value) return
+  checkGameover()
   gameManager.guess(selected.value)
+}
+
+function checkGameover() {
+  if (gameManager.GameOver.value) {
+    emit('popup')
+    return
+  }
 }
 </script>
 
@@ -27,7 +37,7 @@ function guess() {
         v-for="char in row"
         :key="char"
         @click="selectChar(char)"
-        :class="`keyboard__button__${gameManager.GuessedLetters.has(char) ? 'invisible' : 'visible'}`"
+        :class="`keyboard__button--${gameManager.GuessedLetters.has(char) ? 'invisible' : 'visible'}`"
       >
         {{ char }}
       </button>

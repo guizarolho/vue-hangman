@@ -6,10 +6,7 @@ defineProps<{
   victory: boolean
 }>()
 
-const emit = defineEmits<{
-  share: []
-  close: []
-}>()
+const emit = defineEmits(['share', 'close'])
 </script>
 
 <template>
