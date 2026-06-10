@@ -8,6 +8,7 @@ const emit = defineEmits(['close-pref'])
   <div v-if="show" @click.self="emit('close-pref')">
     <h3>Contraste</h3>
     <h3>Modo</h3>
+    <!-- Link para página de estatísticas -->
     <h3>Estatísticas</h3>
     <h3>Comentários</h3>
   </div>

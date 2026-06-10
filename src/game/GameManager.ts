@@ -1,9 +1,12 @@
 import { reactive, ref } from 'vue'
 import type { GameState } from './GameState'
 import { DEFEAT_MESSAGE, MAX_ERRORS, MAX_HINTS, VICTORY_MESSAGE } from '@/utils/consts'
+import type { GameStats } from './GameStats'
 
 export class GameManager {
   private gameState: GameState
+  private gameStats: GameStats
+
   public GameOver = ref<boolean>(false)
   public Victory = ref<boolean>(false)
   public GuessedLetters = reactive(new Set())
@@ -21,6 +24,14 @@ export class GameManager {
       rightGuesses: 0,
       resetTimer: 0,
     })
+
+    this.gameStats = {
+      gamesPlayed: 0,
+      wins: 0,
+      losses: 0,
+      currentStreak: 0,
+      bestStreak: 0,
+    }
   }
 
   guess(letter: string) {
@@ -75,5 +86,9 @@ export class GameManager {
 
   getState() {
     return this.gameState
+  }
+
+  getStats() {
+    return this.gameStats
   }
 }

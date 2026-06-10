@@ -12,5 +12,6 @@ const emit = defineEmits(['open-pref', 'open-help', 'open-stats'])
       <a class="header__button" @click="emit('open-stats')">Statistics</a>
       <a class="header__button" @click="emit('open-pref')">Preferences</a>
     </nav>
+    <!-- Adicionar link para Bio -->
   </header>
 </template>
