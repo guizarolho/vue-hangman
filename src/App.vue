@@ -15,7 +15,8 @@ const showHelp = ref(false)
 const showStats = ref(false)
 
 const secrets = ['KING', 'QUEEN', 'JACK', 'JOKER']
-const gameManager = new GameManager(secrets[0] ?? '')
+const secretWord = secrets[1]
+const gameManager = new GameManager(secretWord ?? '')
 // https://vuejs.org/guide/essentials/watchers
 watch(
   () => gameManager.GameOver.value,
@@ -38,7 +39,7 @@ provide('game', gameManager)
   <div class="game__container">
     <div class="word__container">
       <GameTile
-        v-for="(char, index) in [...(secrets[0] ?? '')]"
+        v-for="(char, index) in [...(secretWord ?? '')]"
         :key="index"
         :letter="char"
         :hidden="!gameManager.GuessedLetters.has(char)"

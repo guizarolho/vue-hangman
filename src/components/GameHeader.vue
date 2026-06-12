@@ -15,3 +15,12 @@ const emit = defineEmits(['open-pref', 'open-help', 'open-stats'])
     <!-- Adicionar link para Bio -->
   </header>
 </template>
+
+<style scoped>
+.header__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+</style>
