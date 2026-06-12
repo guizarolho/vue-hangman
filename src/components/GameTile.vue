@@ -6,16 +6,68 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div :class="`tile__container--${props.hidden ? 'invisible' : 'visible'}`">
-    <h1 class="tile__char">{{ props.letter }}</h1>
+  <div class="game-tile">
+    <div class="game-tile__card" :class="{ 'game-tile__card--visible': !props.hidden }">
+      <div class="game-tile__face game-tile__face--back" />
+      <div class="game-tile__face game-tile__face--front">
+        {{ props.letter }}
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.tile__container--invisible {
-  background: rgba(231, 7, 7, 0.7);
+.game-tile {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  perspective: 1000px;
 }
-.tile__container--visible {
-  background: rgba(52, 231, 7, 0.7);
+
+.game-tile__card {
+  position: relative;
+
+  width: 100px;
+  height: 100px;
+
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease-in-out;
+}
+
+.game-tile__card--visible {
+  transform: rotateY(180deg);
+}
+
+.game-tile__face {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 10px;
+
+  font-family:
+    'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+  font-size: 4rem;
+  font-weight: bold;
+  color: antiquewhite;
+
+  backface-visibility: hidden;
+}
+
+.game-tile__face--front {
+  background: green;
+  transform: rotateY(180deg);
+}
+
+.game-tile__face--back {
+  background: red;
 }
 </style>

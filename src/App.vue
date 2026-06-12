@@ -36,7 +36,7 @@ provide('game', gameManager)
     @open-stats="showStats = true"
   />
   <div class="game__container">
-    <div class="word__container" style="display: flex; flex-direction: row">
+    <div class="word__container">
       <GameTile
         v-for="(char, index) in [...(secrets[0] ?? '')]"
         :key="index"
@@ -56,4 +56,20 @@ provide('game', gameManager)
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.word__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+</style>
