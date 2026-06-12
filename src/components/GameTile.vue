@@ -52,9 +52,6 @@ const props = defineProps<{
 
   border-radius: 10px;
 
-  font-family:
-    'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
   font-size: 4rem;
   font-weight: bold;
   color: antiquewhite;

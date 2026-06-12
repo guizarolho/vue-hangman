@@ -66,11 +66,18 @@ provide('game', gameManager)
   height: 100%;
   margin: 0;
   padding: 0;
+
+  font-family:
+    'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
 .word__container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 </style>
