@@ -54,7 +54,7 @@ const props = defineProps<{
 
   font-size: 4rem;
   font-weight: bold;
-  color: antiquewhite;
+  color: white;
 
   backface-visibility: hidden;
 }

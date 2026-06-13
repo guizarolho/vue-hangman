@@ -15,7 +15,7 @@ const showHelp = ref(false)
 const showStats = ref(false)
 
 const secrets = ['KING', 'QUEEN', 'JACK', 'JOKER']
-const secretWord = secrets[1]
+const secretWord = secrets[3]
 const gameManager = new GameManager(secretWord ?? '')
 // https://vuejs.org/guide/essentials/watchers
 watch(

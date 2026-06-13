@@ -57,7 +57,7 @@ const emit = defineEmits(['close-pref'])
 }
 
 .modal__container {
-  background: #ffffff;
+  background: white;
   width: 100%;
   max-width: 400px;
   border-radius: 16px;
@@ -73,7 +73,7 @@ const emit = defineEmits(['close-pref'])
   justify-content: space-between;
   align-items: center;
   padding: 1.25rem 1.5rem;
-  border-bottom: 1px solid #f3f4f6;
+  border-bottom: 1px solid lightgrey;
 }
 
 .modal__title {
@@ -119,11 +119,11 @@ const emit = defineEmits(['close-pref'])
 }
 
 .modal__option:hover {
-  background-color: #f3f4f6;
+  background-color: grey;
 }
 
 .modal__option:active {
-  background-color: #e5e7eb;
+  background-color: aliceblue;
 }
 
 .modal__option-icon {
