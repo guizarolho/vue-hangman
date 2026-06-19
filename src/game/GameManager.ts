@@ -1,6 +1,6 @@
 import { reactive, ref } from 'vue'
-import type { GameState } from './GameState'
 import { DEFEAT_MESSAGE, MAX_ERRORS, MAX_HINTS, VICTORY_MESSAGE } from '@/utils/consts'
+import type { GameState } from './GameState'
 import type { GameStats } from './GameStats'
 
 export class GameManager {
@@ -39,18 +39,21 @@ export class GameManager {
     if (this.GuessedLetters.has(letter)) return
 
     this.GuessedLetters.add(letter)
+    const isCorrect = this.gameState.rightLetters.has(letter)
 
-    if (this.gameState.rightLetters.has(letter)) {
-      this.gameState.rightGuesses += 1
+    if (isCorrect) {
+      this.gameState.rightGuesses++
     } else {
-      this.gameState.maxErrors -= 1
+      this.gameState.maxErrors--
     }
 
     if (this.checkCondition()) {
       this.GameOver.value = true
-      this.gameStats.gamesPlayed += 1
+      this.gameStats.gamesPlayed++
       this.gameOver()
     }
+
+    return isCorrect
   }
 
   checkCondition(): boolean {

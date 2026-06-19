@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { GameManager } from '@/game/GameManager'
 import { inject, ref } from 'vue'
-const selected = ref('')
+const selected = ref<HTMLButtonElement | null>(null)
 const gameManager = inject<GameManager>('game')!
 const emit = defineEmits(['open-gameover'])
 
@@ -11,15 +11,22 @@ const keyboardRows: string[][] = [
   ['Z', 'X', 'C', 'V', 'B', 'N', 'M'],
 ]
 
-function selectChar(char: string) {
+function selectChar(element: HTMLButtonElement) {
   checkGameover()
-  selected.value = char
+  selected.value = element
+  selected.value.classList.add('highlight')
 }
 
 function guess() {
   if (!gameManager || !selected.value) return
   checkGameover()
-  gameManager.guess(selected.value)
+
+  const result = gameManager.guess(selected.value.value)
+  if (result === undefined) return
+
+  selected.value.classList.add(result ? 'right' : 'wrong')
+  selected.value.classList.remove('highlight')
+  selected.value = null
 }
 
 function checkGameover() {
@@ -38,13 +45,14 @@ function checkGameover() {
       <button
         v-for="char in row"
         :key="char"
-        @click="selectChar(char)"
-        :class="`keyboard__button--${gameManager.GuessedLetters.has(char) ? 'invisible' : 'visible'}`"
+        @click="selectChar($event.currentTarget as HTMLButtonElement)"
+        class="keyboard__button"
+        :value="char"
       >
         {{ char }}
       </button>
 
-      <button v-if="index === 2" @click="selectChar('')">⌫</button>
+      <button v-if="index === 2" @click="null">⌫</button>
     </div>
   </div>
 </template>
@@ -97,18 +105,26 @@ function checkGameover() {
   transform: scale(0.95);
 }
 
-.keyboard__button--visible {
+.keyboard__button.right {
+  background: green;
+  cursor: initial;
+  transition: background-color 0.6s ease;
+}
+
+.keyboard__button.wrong {
+  background: red;
+  cursor: initial;
+  transition: background-color 0.6s ease;
+}
+
+.keyboard__button.highlight {
+  background: yellow;
+  color: black;
+  transition: background-color 0.6 ease;
+}
+
+.keyboard__button {
   background: #818384;
-}
-
-.keyboard__button--invisible {
-  background: #3a3a3c;
-  color: #6b6b6b;
-  cursor: default;
-}
-
-.keyboard__button--invisible:hover {
-  background: #3a3a3c;
 }
 
 .keyboard__container > button:hover {
