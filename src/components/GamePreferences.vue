@@ -62,8 +62,8 @@ const emit = defineEmits(['close-pref'])
   max-width: 400px;
   border-radius: 16px;
   box-shadow:
-    0 10px 25px -5px rgba(0, 0, 0, 0.1),
-    0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    0 10px 25px -5px rgba(0, 0, 0, 0.4),
+    0 8px 10px -6px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   animation: scaleUp 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }

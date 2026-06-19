@@ -19,11 +19,21 @@ const gameStats = gameManager.getStats()
           <button class="stats__close-btn" @click.self="emit('close-stats')">✕</button>
         </div>
         <div class="stats__content">
-          <span class="stats__value">Partidas Jogadas: {{ gameStats.gamesPlayed }}</span>
-          <span class="stats__value">Vitórias: {{ gameStats.wins }}</span>
-          <span class="stats__value">Derrotas: {{ gameStats.losses }}</span>
-          <span class="stats__value">Maior Sequência: {{ gameStats.bestStreak }}</span>
-          <span class="stats__value">Sequência Atual: {{ gameStats.currentStreak }}</span>
+          <div class="stats__option">
+            <span class="stats__option-text">Partidas Jogadas: {{ gameStats.gamesPlayed }}</span>
+          </div>
+          <div class="stats__option">
+            <span class="stats__option-text">Vitórias: {{ gameStats.wins }}</span>
+          </div>
+          <div class="stats__option">
+            <span class="stats__option-text">Derrotas: {{ gameStats.losses }}</span>
+          </div>
+          <div class="stats__option">
+            <span class="stats__option-text">Maior Sequência: {{ gameStats.bestStreak }}</span>
+          </div>
+          <div class="stats__option">
+            <span class="stats__option-text">Sequência Atual: {{ gameStats.currentStreak }}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -106,6 +116,12 @@ const gameStats = gameManager.getStats()
   cursor: pointer;
   text-align: left;
   transition: background-color 0.15s ease;
+}
+
+.stats__option-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #374151;
 }
 
 .fade-enter-active,

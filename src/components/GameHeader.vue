@@ -6,15 +6,17 @@ const emit = defineEmits(['open-pref', 'open-help', 'open-stats'])
   <header class="header__container">
     <div class="header__content">
       <nav class="header__group header__group--left">
-        <a class="header__button">Home</a>
         <a class="header__button" @click="emit('open-help')">Help</a>
+        <a class="header__button" @click="emit('open-stats')">Statistics</a>
+        <a class="header__button" @click="emit('open-pref')">Preferences</a>
       </nav>
+
       <div class="header__center">
         <h1 class="header__title">HANG</h1>
       </div>
+
       <div class="header__group header__group--right">
-        <a class="header__button" @click="emit('open-stats')">Statistics</a>
-        <a class="header__button" @click="emit('open-pref')">Preferences</a>
+        <RouterLink to="/about" class="header__button">About</RouterLink>
       </div>
     </div>
   </header>

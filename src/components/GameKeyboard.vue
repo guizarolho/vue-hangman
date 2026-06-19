@@ -33,6 +33,8 @@ function checkGameover() {
 <template>
   <div class="keyboard__container">
     <div v-for="(row, index) in keyboardRows" :key="`row-${index}`" class="keyboard__row">
+      <button class="keyboard__enter" v-if="index === 2" @click="guess">ENTER</button>
+
       <button
         v-for="char in row"
         :key="char"
@@ -41,17 +43,79 @@ function checkGameover() {
       >
         {{ char }}
       </button>
+
+      <button v-if="index === 2" @click="selectChar('')">⌫</button>
     </div>
-    <button @click="guess">Enter</button>
-    <button @click="selectChar('')">Backspace</button>
   </div>
 </template>
 
 <style scoped>
-.keyboard__button--invisible {
-  background: rgba(88, 82, 82, 0.7);
+.keyboard__container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+  margin-top: 1rem;
 }
+
+.keyboard__row {
+  display: flex;
+  gap: 6px;
+}
+
+.keyboard__row > button {
+  width: 44px;
+  height: 58px;
+
+  border: none;
+  border-radius: 4px;
+
+  background: #818384;
+  color: white;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.keyboard__row > button.keyboard__enter {
+  font-size: 0.6rem;
+  background-color: black;
+}
+
+.keyboard__row button:hover {
+  background: #9a9c9d;
+}
+
+.keyboard__row button:active {
+  transform: scale(0.95);
+}
+
 .keyboard__button--visible {
-  background: rgba(207, 194, 194, 0.7);
+  background: #818384;
+}
+
+.keyboard__button--invisible {
+  background: #3a3a3c;
+  color: #6b6b6b;
+  cursor: default;
+}
+
+.keyboard__button--invisible:hover {
+  background: #3a3a3c;
+}
+
+.keyboard__container > button:hover {
+  background: #9a9c9d;
+}
+
+.keyboard__container > button:active {
+  transform: scale(0.95);
 }
 </style>

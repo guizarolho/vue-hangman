@@ -14,11 +14,12 @@ const emit = defineEmits(['close-help'])
           <button class="help__close-btn" @click="emit('close-help')">✕</button>
         </header>
         <div class="help__content">
-          <h3>Objetivo</h3>
-          <p>
-            Adivinhe a palavra secreta letra por letra. Cada erro reduz suas tentativas restantes.
-            Revele todas as letras antes que elas acabem para vencer. Boa sorte! 🍀
-          </p>
+          <div class="help__content-objective">
+            <p class="help__content-text">
+              Adivinhe a palavra secreta letra por letra. Cada erro reduz suas tentativas restantes.
+              Revele todas as letras antes que elas acabem para vencer. Boa sorte! 🍀
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -87,6 +88,24 @@ const emit = defineEmits(['close-help'])
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.help__content-objective {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.help__content-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #374151;
 }
 
 .fade-enter-active,
