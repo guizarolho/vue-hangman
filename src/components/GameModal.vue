@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { DEFEAT_MESSAGE, VICTORY_MESSAGE } from '@/utils/consts'
+import GameCountdown from './GameCountdown.vue'
 
 defineProps<{
   show: boolean
@@ -37,6 +38,10 @@ const emit = defineEmits(['share', 'close-gameover'])
 
           <div class="modal__actions">
             <button class="btn btn--primary" @click="emit('share')">Compartilhar Resultado</button>
+          </div>
+          <div class="modal__countdown-wrapper">
+            <span class="modal__countdown-label">Próxima palavra em</span>
+            <GameCountdown />
           </div>
         </div>
       </div>
@@ -164,6 +169,23 @@ const emit = defineEmits(['share', 'close-gameover'])
 .btn--secondary:hover {
   background-color: #e2e8f0;
   color: #334155;
+}
+
+.modal__countdown-wrapper {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.modal__countdown-label {
+  font-family: sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #94a3b8;
+  font-weight: 600;
 }
 
 .fade-enter-active,
