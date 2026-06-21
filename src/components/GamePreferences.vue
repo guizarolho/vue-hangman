@@ -1,8 +1,20 @@
 <script setup lang="ts">
+import { SUPPORT_EMAIL } from '@/utils/consts'
+
 defineProps<{
   show: boolean
 }>()
 const emit = defineEmits(['close-pref'])
+function sendemail() {
+  const subject = encodeURIComponent('Hang')
+  const body = encodeURIComponent('Deixe aqui seu comentário, sugestão ou bug encontrado:\n\n')
+
+  const mailtoUrl = `mailto:${SUPPORT_EMAIL}?subject=${subject}&body=${body}`
+
+  const link = document.createElement('a')
+  link.href = mailtoUrl
+  link.click()
+}
 </script>
 
 <template>
@@ -25,12 +37,7 @@ const emit = defineEmits(['close-pref'])
             <span class="modal__option-text">Modo (Escuro/Claro)</span>
           </button>
 
-          <button class="modal__option">
-            <span class="modal__option-icon">📊</span>
-            <span class="modal__option-text">Estatísticas</span>
-          </button>
-
-          <button class="modal__option">
+          <button @click="sendemail" class="modal__option">
             <span class="modal__option-icon">💬</span>
             <span class="modal__option-text">Comentários</span>
           </button>
