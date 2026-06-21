@@ -45,11 +45,6 @@ const emit = defineEmits(['share', 'close-gameover'])
 </template>
 
 <style scoped>
-:macro {
-  --color-victory: #4caf50;
-  --color-defeat: #e53935;
-}
-
 .modal__overlay {
   position: fixed;
   top: 0;
@@ -78,10 +73,10 @@ const emit = defineEmits(['share', 'close-gameover'])
 }
 
 .modal__container--victory {
-  border-top-color: var(--color-victory);
+  border-top-color: green;
 }
 .modal__container--defeat {
-  border-top-color: var(--color-defeat);
+  border-top-color: red;
 }
 
 .modal__close-btn {

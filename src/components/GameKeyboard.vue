@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { GameManager } from '@/game/GameManager'
-import { inject, ref } from 'vue'
-const selected = ref<HTMLButtonElement | null>(null)
+import { inject, onMounted, onUnmounted, ref } from 'vue'
+
+const selected = ref<string>('')
 const gameManager = inject<GameManager>('game')!
+const keyTiles: { [key: string]: HTMLButtonElement } = {}
 const emit = defineEmits(['open-gameover'])
 
 const keyboardRows: string[][] = [
@@ -11,22 +13,26 @@ const keyboardRows: string[][] = [
   ['Z', 'X', 'C', 'V', 'B', 'N', 'M'],
 ]
 
-function selectChar(element: HTMLButtonElement) {
+function selectChar(char: string) {
   checkGameover()
-  selected.value = element
-  selected.value.classList.add('highlight')
+
+  if (selected.value === char) return
+
+  keyTiles[selected.value]?.classList.remove('highlight')
+  selected.value = char
+  keyTiles[selected.value]?.classList.add('highlight')
 }
 
 function guess() {
   if (!gameManager || !selected.value) return
   checkGameover()
 
-  const result = gameManager.guess(selected.value.value)
+  const result = gameManager.guess(selected.value)
   if (result === undefined) return
 
-  selected.value.classList.add(result ? 'right' : 'wrong')
-  selected.value.classList.remove('highlight')
-  selected.value = null
+  keyTiles[selected.value]?.classList.add(result ? 'right' : 'wrong')
+  keyTiles[selected.value]?.classList.remove('highlight')
+  selected.value = ''
 }
 
 function checkGameover() {
@@ -35,24 +41,55 @@ function checkGameover() {
     return
   }
 }
+
+function handleKeydown(event: KeyboardEvent) {
+  const key = event.key.toUpperCase()
+  if (/^[A-Z]$/.test(key)) {
+    selectChar(key)
+  }
+
+  if (event.key === 'Backspace') {
+    clear()
+  }
+
+  if (event.key === 'Enter') {
+    guess()
+  }
+}
+
+function clear() {
+  keyTiles[selected.value]?.classList.remove('highlight')
+  selected.value = ''
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown)
+})
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeydown)
+})
 </script>
 
 <template>
   <div class="keyboard__container">
     <div v-for="(row, index) in keyboardRows" :key="`row-${index}`" class="keyboard__row">
       <button class="keyboard__enter" v-if="index === 2" @click="guess">ENTER</button>
-
       <button
         v-for="char in row"
         :key="char"
-        @click="selectChar($event.currentTarget as HTMLButtonElement)"
+        :ref="
+          (e) => {
+            keyTiles[char] = e as HTMLButtonElement
+          }
+        "
+        @click="selectChar(char)"
         class="keyboard__button"
         :value="char"
       >
         {{ char }}
       </button>
 
-      <button v-if="index === 2" @click="null">⌫</button>
+      <button v-if="index === 2" @click="clear()">⌫</button>
     </div>
   </div>
 </template>
@@ -120,7 +157,7 @@ function checkGameover() {
 .keyboard__button.highlight {
   background: yellow;
   color: black;
-  transition: background-color 0.6 ease;
+  transition: background-color 0.1 ease;
 }
 
 .keyboard__button {
