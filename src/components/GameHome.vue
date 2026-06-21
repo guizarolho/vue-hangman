@@ -8,6 +8,7 @@ import GamePreferences from './GamePreferences.vue'
 import GameHelp from './GameHelp.vue'
 import GameStats from './GameStats.vue'
 import { GameManager } from '../game/GameManager.ts'
+import GameAttempts from './GameAttempts.vue'
 
 const showGameover = ref(false)
 const showPreferences = ref(false)
@@ -48,6 +49,7 @@ provide('game', gameManager)
       />
     </div>
 
+    <GameAttempts />
     <GameKeyboard @open-gameover="showGameover = true" />
     <GameModal
       :show="showGameover"

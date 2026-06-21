@@ -30,8 +30,8 @@ function guess() {
   const result = gameManager.guess(selected.value)
   if (result === undefined) return
 
-  keyTiles[selected.value]?.classList.add(result ? 'right' : 'wrong')
   keyTiles[selected.value]?.classList.remove('highlight')
+  keyTiles[selected.value]?.classList.add(result ? 'right' : 'wrong')
   selected.value = ''
 }
 
@@ -89,7 +89,7 @@ onUnmounted(() => {
         {{ char }}
       </button>
 
-      <button v-if="index === 2" @click="clear()">⌫</button>
+      <button class="keyboard__clear" v-if="index === 2" @click="clear()">⌫</button>
     </div>
   </div>
 </template>

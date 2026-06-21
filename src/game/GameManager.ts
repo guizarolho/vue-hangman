@@ -10,6 +10,7 @@ export class GameManager {
   public GameOver = ref<boolean>(false)
   public Victory = ref<boolean>(false)
   public GuessedLetters = reactive(new Set())
+  public UserLife = ref<number>(MAX_ERRORS)
 
   constructor(secretWord: string) {
     this.gameState = reactive({

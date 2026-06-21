@@ -46,6 +46,19 @@
 </template>
 
 <style scoped>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  font-family:
+    'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 .bio__wrapper {
   min-height: 100vh;
   background-color: #f8fafc;
@@ -60,6 +73,9 @@
   max-width: 500px;
   width: 100%;
   margin: 0 auto;
+  display: flex;
+  justify-content: left;
+  align-items: center;
 }
 
 .bio__back-link {
