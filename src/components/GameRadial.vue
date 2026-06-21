@@ -1,15 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
-const inner = ref<HTMLElement>()
-function emptyfill() {
-  inner.value?.classList.add('empty')
-}
+defineProps<{
+  checked: boolean
+}>()
 </script>
 
 <template>
-  <div @click="emptyfill()" class="radial__container">
-    <div class="radial__inner" :ref="(e) => (inner = e as HTMLElement)" />
+  <div class="radial__container">
+    <div class="radial__inner" :class="checked && 'radial__inner-empty'" />
   </div>
 </template>
 
@@ -39,7 +36,7 @@ function emptyfill() {
   transition: background 0.3s ease-in-out;
 }
 
-.radial__inner.empty {
+.radial__inner-empty {
   background: white;
 }
 </style>

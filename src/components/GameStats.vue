@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import type { GameManager } from '@/game/GameManager'
+import { GAME_MANAGER } from '@/utils/consts'
 import { inject } from 'vue'
 
 defineProps<{
   show: boolean
 }>()
 const emit = defineEmits(['close-stats'])
-const gameManager = inject<GameManager>('game')!
+const gameManager = inject<GameManager>(GAME_MANAGER)!
 const gameStats = gameManager.getStats()
 </script>
 

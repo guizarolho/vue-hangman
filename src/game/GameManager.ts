@@ -1,4 +1,4 @@
-import { reactive, ref } from 'vue'
+import { reactive, ref, computed } from 'vue'
 import { DEFEAT_MESSAGE, MAX_ERRORS, MAX_HINTS, VICTORY_MESSAGE } from '@/utils/consts'
 import type { GameState } from './GameState'
 import type { GameStats } from './GameStats'
@@ -10,7 +10,7 @@ export class GameManager {
   public GameOver = ref<boolean>(false)
   public Victory = ref<boolean>(false)
   public GuessedLetters = reactive(new Set())
-  public UserLife = ref<number>(MAX_ERRORS)
+  public UserLife
 
   constructor(secretWord: string) {
     this.gameState = reactive({
@@ -33,6 +33,8 @@ export class GameManager {
       currentStreak: 0,
       bestStreak: 0,
     }
+
+    this.UserLife = computed(() => this.gameState.maxErrors)
   }
 
   guess(letter: string) {

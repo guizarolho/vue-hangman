@@ -9,6 +9,7 @@ import GameHelp from './GameHelp.vue'
 import GameStats from './GameStats.vue'
 import { GameManager } from '../game/GameManager.ts'
 import GameAttempts from './GameAttempts.vue'
+import { GAME_MANAGER } from '@/utils/consts.ts'
 
 const showGameover = ref(false)
 const showPreferences = ref(false)
@@ -29,7 +30,7 @@ watch(
     }
   },
 )
-provide('game', gameManager)
+provide(GAME_MANAGER, gameManager)
 </script>
 
 <template>
