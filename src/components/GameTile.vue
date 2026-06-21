@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// https://www.w3schools.com/howto/howto_css_flip_card.asp
 const props = defineProps<{
   letter: string
   hidden: boolean

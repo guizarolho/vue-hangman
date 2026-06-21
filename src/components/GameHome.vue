@@ -7,8 +7,8 @@ import GameModal from './GameModal.vue'
 import GamePreferences from './GamePreferences.vue'
 import GameHelp from './GameHelp.vue'
 import GameStats from './GameStats.vue'
-import { GameManager } from '../game/GameManager.ts'
 import GameAttempts from './GameAttempts.vue'
+import { GameManager } from '../game/GameManager.ts'
 import { GAME_MANAGER } from '@/utils/consts.ts'
 
 const showGameover = ref(false)
