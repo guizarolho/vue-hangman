@@ -7,3 +7,4 @@ export const SUPPORT_EMAIL = 'guimfontes7@gmail.com'
 export const GAME_SETTINGS = 'gameSettings'
 export const GAME_STATE = 'gameState'
 export const GAME_STATS = 'gameStats'
+export const DAY_EPOCH_TIME = 86400000

@@ -2,6 +2,7 @@ import { reactive, ref, computed } from 'vue'
 import { GAME_STATE, GAME_STATS, MAX_ERRORS } from '@/utils/consts'
 import type { GameState } from './GameState'
 import type { GameStats } from './GameStats'
+import { checkStreak, saveDate } from '@/utils/time'
 
 export class GameManager {
   private gameState: GameState
@@ -30,6 +31,7 @@ export class GameManager {
       losses: 0,
       currentStreak: 0,
       bestStreak: 0,
+      lastGame: new Date(),
     }
 
     this.AttemptsRemaining = computed(() => this.gameState.errors)
@@ -51,15 +53,35 @@ export class GameManager {
       this.gameState.errors--
     }
 
-    this.saveState()
-
     if (this.checkCondition()) {
       this.GameOver.value = true
       this.gameStats.gamesPlayed++
+
+      this.updateCurrentStreak()
+      this.gameStats.lastGame = saveDate()
       this.saveStats()
     }
 
     return isCorrect
+  }
+
+  updateCurrentStreak() {
+    const continuedStreak = checkStreak(this.gameStats.lastGame)
+
+    if (!this.Victory.value) {
+      this.gameStats.currentStreak = 0
+      return
+    }
+
+    if (continuedStreak) {
+      this.gameStats.currentStreak++
+    } else {
+      this.gameStats.currentStreak = 1
+    }
+
+    if (this.gameStats.currentStreak > this.gameStats.bestStreak) {
+      this.gameStats.bestStreak = this.gameStats.currentStreak
+    }
   }
 
   checkCondition(): boolean {
@@ -93,7 +115,9 @@ export class GameManager {
   loadStats() {
     const data = localStorage.getItem(GAME_STATS)
     if (!data) return
-    this.gameStats = JSON.parse(data) as GameStats
+    const parsed = JSON.parse(data) as GameStats
+    this.gameStats = parsed
+    this.gameStats.lastGame = new Date(parsed.lastGame)
   }
 
   saveState() {

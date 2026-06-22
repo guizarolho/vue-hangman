@@ -4,4 +4,5 @@ export interface GameStats {
   losses: number
   currentStreak: number
   bestStreak: number
+  lastGame: Date
 }
