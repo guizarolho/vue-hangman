@@ -1,5 +1,5 @@
 import { reactive, ref, computed } from 'vue'
-import { DEFEAT_MESSAGE, GAME_STATE, MAX_ERRORS, MAX_HINTS, VICTORY_MESSAGE } from '@/utils/consts'
+import { GAME_STATE, GAME_STATS, MAX_ERRORS } from '@/utils/consts'
 import type { GameState } from './GameState'
 import type { GameStats } from './GameStats'
 
@@ -20,8 +20,6 @@ export class GameManager {
       guessedLetters: new Set(),
 
       errors: MAX_ERRORS,
-      hints: MAX_HINTS,
-
       rightGuesses: 0,
       resetTimer: 0,
     })
@@ -36,6 +34,8 @@ export class GameManager {
 
     this.AttemptsRemaining = computed(() => this.gameState.errors)
     this.GuessedLetters = computed(() => this.gameState.guessedLetters)
+
+    this.loadStats()
   }
 
   guess(letter: string) {
@@ -51,10 +51,12 @@ export class GameManager {
       this.gameState.errors--
     }
 
+    this.saveState()
+
     if (this.checkCondition()) {
       this.GameOver.value = true
       this.gameStats.gamesPlayed++
-      this.gameOver()
+      this.saveStats()
     }
 
     return isCorrect
@@ -76,30 +78,22 @@ export class GameManager {
     return false
   }
 
-  getMaskedWord(): string {
-    return [...this.gameState.secretWord]
-      .map((letter) => (this.gameState.guessedLetters.has(letter) ? letter : '_'))
-      .join(' ')
-  }
-
-  getRemainingHints(): number {
-    return this.gameState.hints
-  }
-
-  gameOver() {
-    if (this.Victory.value) {
-      console.log(VICTORY_MESSAGE)
-    } else {
-      console.log(DEFEAT_MESSAGE)
-    }
-  }
-
   getState() {
     return this.gameState
   }
 
   getStats() {
     return this.gameStats
+  }
+
+  saveStats() {
+    localStorage.setItem(GAME_STATS, JSON.stringify(this.gameStats))
+  }
+
+  loadStats() {
+    const data = localStorage.getItem(GAME_STATS)
+    if (!data) return
+    this.gameStats = JSON.parse(data) as GameStats
   }
 
   saveState() {
@@ -109,6 +103,6 @@ export class GameManager {
   loadState() {
     const data = localStorage.getItem(GAME_STATE)
     if (!data) return
-    this.gameState = JSON.parse(data)
+    this.gameState = reactive(JSON.parse(data) as GameState)
   }
 }

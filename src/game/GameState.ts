@@ -5,7 +5,5 @@ export interface GameState {
 
   rightGuesses: number
   errors: number
-
-  hints: number
   resetTimer: number
 }

@@ -6,3 +6,4 @@ export const MAX_HINTS = 3
 export const SUPPORT_EMAIL = 'guimfontes7@gmail.com'
 export const GAME_SETTINGS = 'gameSettings'
 export const GAME_STATE = 'gameState'
+export const GAME_STATS = 'gameStats'
