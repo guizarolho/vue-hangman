@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import { SUPPORT_EMAIL } from '@/utils/consts'
+import { ref } from 'vue'
+import GameSlider from './GameSlider.vue'
 
 defineProps<{
   show: boolean
 }>()
 const emit = defineEmits(['close-pref'])
+const highContrastMode = ref<boolean>(false)
+const darkMode = ref<boolean>(false)
+
 function sendemail() {
   const subject = encodeURIComponent('Hang')
   const body = encodeURIComponent('Deixe aqui seu comentário, sugestão ou bug encontrado:\n\n')
@@ -27,14 +32,16 @@ function sendemail() {
         </header>
 
         <div class="modal__content">
-          <button class="modal__option">
+          <button class="modal__option" @click="highContrastMode = !highContrastMode">
             <span class="modal__option-icon">◑</span>
             <span class="modal__option-text">Contraste</span>
+            <GameSlider :checked="highContrastMode" />
           </button>
 
-          <button class="modal__option">
+          <button class="modal__option" @click="darkMode = !darkMode">
             <span class="modal__option-icon">☀️</span>
             <span class="modal__option-text">Modo (Escuro/Claro)</span>
+            <GameSlider :checked="darkMode" />
           </button>
 
           <button @click="sendemail" class="modal__option">

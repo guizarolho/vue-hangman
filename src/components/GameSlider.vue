@@ -5,8 +5,8 @@ defineProps<{
 </script>
 
 <template>
-  <div class="slider__container">
-    <div class="slider__spacer" :class="checked && 'slider__spacer-active'"></div>
+  <div class="slider__container" :class="checked && 'slider__container-active'">
+    <div class="slider__spacer"></div>
     <div class="slider__marker"></div>
   </div>
 </template>
@@ -16,10 +16,10 @@ defineProps<{
   display: flex;
   justify-content: flex-start;
 
-  width: 200px;
-  height: 100px;
+  width: 40px;
+  height: 20px;
   margin: 10px;
-  border: 0.6rem solid lightgrey;
+  border: 0.2rem solid lightgrey;
   border-radius: 100px;
   background: lightgrey;
 }
@@ -40,6 +40,6 @@ defineProps<{
   height: 100%;
   border-radius: 100px;
 
-  transition: width 0.6s ease;
+  transition: width 0.3s ease;
 }
 </style>
