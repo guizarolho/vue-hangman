@@ -4,3 +4,5 @@ export const GAME_MANAGER = 'game'
 export const MAX_ERRORS = 5
 export const MAX_HINTS = 3
 export const SUPPORT_EMAIL = 'guimfontes7@gmail.com'
+export const GAME_SETTINGS = 'gameSettings'
+export const GAME_STATE = 'gameState'

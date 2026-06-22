@@ -1,5 +1,5 @@
 import { reactive, ref, computed } from 'vue'
-import { DEFEAT_MESSAGE, MAX_ERRORS, MAX_HINTS, VICTORY_MESSAGE } from '@/utils/consts'
+import { DEFEAT_MESSAGE, GAME_STATE, MAX_ERRORS, MAX_HINTS, VICTORY_MESSAGE } from '@/utils/consts'
 import type { GameState } from './GameState'
 import type { GameStats } from './GameStats'
 
@@ -10,13 +10,14 @@ export class GameManager {
   public GameOver = ref<boolean>(false)
   public Victory = ref<boolean>(false)
   public GuessedLetters = reactive(new Set())
-  public UserLife
+  public AttemptsRemaining
 
   constructor(secretWord: string) {
     this.gameState = reactive({
       secretWord: secretWord,
 
       rightLetters: new Set(secretWord),
+      guessedLetters: new Set(),
 
       maxErrors: MAX_ERRORS,
       maxHints: MAX_HINTS,
@@ -34,7 +35,7 @@ export class GameManager {
       bestStreak: 0,
     }
 
-    this.UserLife = computed(() => this.gameState.maxErrors)
+    this.AttemptsRemaining = computed(() => this.gameState.maxErrors)
   }
 
   guess(letter: string) {
@@ -99,5 +100,14 @@ export class GameManager {
 
   getStats() {
     return this.gameStats
+  }
+
+  saveState() {
+    localStorage.setItem(GAME_STATE, JSON.stringify(this.gameState))
+  }
+
+  loadState() {
+    const savedState = localStorage.getItem(GAME_STATE) || ''
+    return JSON.parse(savedState)
   }
 }

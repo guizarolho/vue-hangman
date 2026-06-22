@@ -12,7 +12,7 @@ const gameManager = inject<GameManager>(GAME_MANAGER)
     <div class="attempts__container">
       <span>Tentativas restantes:</span>
       <template v-for="(_, index) in MAX_ERRORS" :key="index">
-        <GameRadial :checked="index >= gameManager!.UserLife.value" />
+        <GameRadial :checked="index >= gameManager!.AttemptsRemaining.value" />
       </template>
     </div>
   </div>
