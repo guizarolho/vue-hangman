@@ -6,9 +6,9 @@ const emit = defineEmits(['open-pref', 'open-help', 'open-stats'])
   <header class="header__container">
     <div class="header__content">
       <nav class="header__group header__group--left">
-        <a class="header__button" @click="emit('open-help')">Help</a>
-        <a class="header__button" @click="emit('open-stats')">Statistics</a>
-        <a class="header__button" @click="emit('open-pref')">Preferences</a>
+        <a class="header__button" @click="emit('open-help')">Ajuda</a>
+        <a class="header__button" @click="emit('open-stats')">Estatísticas</a>
+        <a class="header__button" @click="emit('open-pref')">Preferências</a>
       </nav>
 
       <div class="header__center">
