@@ -9,7 +9,7 @@ export class GameManager {
 
   public GameOver = ref<boolean>(false)
   public Victory = ref<boolean>(false)
-  public GuessedLetters = reactive(new Set())
+  public GuessedLetters
   public AttemptsRemaining
 
   constructor(secretWord: string) {
@@ -19,10 +19,9 @@ export class GameManager {
       rightLetters: new Set(secretWord),
       guessedLetters: new Set(),
 
-      maxErrors: MAX_ERRORS,
-      maxHints: MAX_HINTS,
+      errors: MAX_ERRORS,
+      hints: MAX_HINTS,
 
-      usedHints: 0,
       rightGuesses: 0,
       resetTimer: 0,
     })
@@ -35,20 +34,21 @@ export class GameManager {
       bestStreak: 0,
     }
 
-    this.AttemptsRemaining = computed(() => this.gameState.maxErrors)
+    this.AttemptsRemaining = computed(() => this.gameState.errors)
+    this.GuessedLetters = computed(() => this.gameState.guessedLetters)
   }
 
   guess(letter: string) {
     if (this.GameOver.value === true) return
-    if (this.GuessedLetters.has(letter)) return
+    if (this.gameState.guessedLetters.has(letter)) return
 
-    this.GuessedLetters.add(letter)
+    this.gameState.guessedLetters.add(letter)
     const isCorrect = this.gameState.rightLetters.has(letter)
 
     if (isCorrect) {
       this.gameState.rightGuesses++
     } else {
-      this.gameState.maxErrors--
+      this.gameState.errors--
     }
 
     if (this.checkCondition()) {
@@ -67,7 +67,7 @@ export class GameManager {
       return true
     }
 
-    if (this.gameState.maxErrors <= 0) {
+    if (this.gameState.errors <= 0) {
       this.Victory.value = false
       this.gameStats.losses += 1
       return true
@@ -78,12 +78,12 @@ export class GameManager {
 
   getMaskedWord(): string {
     return [...this.gameState.secretWord]
-      .map((letter) => (this.GuessedLetters.has(letter) ? letter : '_'))
+      .map((letter) => (this.gameState.guessedLetters.has(letter) ? letter : '_'))
       .join(' ')
   }
 
   getRemainingHints(): number {
-    return this.gameState.maxHints
+    return this.gameState.hints
   }
 
   gameOver() {

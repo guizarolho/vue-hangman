@@ -4,9 +4,8 @@ export interface GameState {
   guessedLetters: Set<string>
 
   rightGuesses: number
-  maxErrors: number
+  errors: number
 
-  usedHints: number
-  maxHints: number
+  hints: number
   resetTimer: number
 }

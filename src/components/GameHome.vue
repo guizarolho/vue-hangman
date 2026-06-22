@@ -46,7 +46,7 @@ provide(GAME_MANAGER, gameManager)
         v-for="(char, index) in [...(secretWord ?? '')]"
         :key="index"
         :letter="char"
-        :hidden="!gameManager.GuessedLetters.has(char)"
+        :hidden="!gameManager.GuessedLetters.value.has(char)"
       />
     </div>
 
