@@ -19,7 +19,6 @@ export class GameSettingsManager {
     this.loadSettings()
   }
 
-  // use true for darkmode, false for highcontrastmode
   setMode(isDarkMode: boolean, value: boolean) {
     if (isDarkMode) {
       this.gamePrefs.darkMode = value

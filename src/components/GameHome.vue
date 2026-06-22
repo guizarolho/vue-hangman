@@ -12,16 +12,16 @@ import { GameManager } from '../game/GameManager.ts'
 import { GAME_MANAGER, GAME_SETTINGS } from '@/utils/consts.ts'
 import { GameSettingsManager } from '@/game/GameSettingsManager.ts'
 
-const showGameover = ref(false)
-const showPreferences = ref(false)
-const showHelp = ref(false)
-const showStats = ref(false)
-
 const secrets = ['KING', 'QUEEN', 'JACK', 'JOKER']
 const secretWord = secrets[3]
 
 const gameManager = new GameManager(secretWord ?? '')
 const settingsManager = new GameSettingsManager()
+
+const showGameover = ref(false)
+const showPreferences = ref(false)
+const showHelp = ref(false)
+const showStats = ref(false)
 
 // https://vuejs.org/guide/essentials/watchers
 watch(

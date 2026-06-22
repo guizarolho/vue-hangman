@@ -65,8 +65,6 @@ export class GameManager {
       this.gameState.gameResult += RED_TILE
     }
 
-    this.saveState()
-
     if (this.checkCondition()) {
       this.gameState.doneTodayGame = true
       this.gameStats.gamesPlayed++
@@ -76,6 +74,7 @@ export class GameManager {
       this.saveStats()
     }
 
+    this.saveState()
     return isCorrect
   }
 
