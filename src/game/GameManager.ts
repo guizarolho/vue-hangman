@@ -128,12 +128,24 @@ export class GameManager {
   }
 
   saveState() {
-    localStorage.setItem(GAME_STATE, JSON.stringify(this.gameState))
+    localStorage.setItem(
+      GAME_STATE,
+      JSON.stringify({
+        ...this.gameState,
+        rightLetters: [...this.gameState.rightLetters],
+        guessedLetters: [...this.gameState.guessedLetters],
+      }),
+    )
   }
 
   loadState() {
     const data = localStorage.getItem(GAME_STATE)
     if (!data) return
-    this.gameState = reactive(JSON.parse(data) as GameState)
+    const parsed = JSON.parse(data) as GameState
+    this.gameState = reactive({
+      ...parsed,
+      rightLetters: new Set(parsed.rightLetters),
+      guessedLetters: new Set(parsed.guessedLetters),
+    })
   }
 }
