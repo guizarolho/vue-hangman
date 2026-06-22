@@ -9,6 +9,6 @@ export interface GameState {
   errors: number
   resetTimer: number
 
-  doneTodayGame: false
-  victory: false
+  doneTodayGame: boolean
+  victory: boolean
 }

@@ -7,10 +7,7 @@
     <main class="main__container">
       <div class="bio__card">
         <div class="image__container">
-          <img
-            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
-            alt="Guilherme Mendes Fontes"
-          />
+          <img src="" alt="Guilherme Mendes Fontes" />
         </div>
 
         <div class="title__container">

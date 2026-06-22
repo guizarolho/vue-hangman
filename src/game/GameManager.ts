@@ -1,4 +1,5 @@
-import { reactive, ref, computed } from 'vue'
+import { reactive, computed } from 'vue'
+import type { ComputedRef } from 'vue'
 import { GAME_STATE, GAME_STATS, GREEN_TILE, MAX_ERRORS, RED_TILE } from '@/utils/consts'
 import type { GameState } from './GameState'
 import type { GameStats } from './GameStats'
@@ -8,11 +9,11 @@ export class GameManager {
   private gameState: GameState
   private gameStats: GameStats
 
-  public GameOver = ref<boolean>(false)
-  public Victory = ref<boolean>(false)
-  public GuessedLetters
-  public RightLetters
-  public AttemptsRemaining
+  public GameOver: ComputedRef<boolean>
+  public Victory: ComputedRef<boolean>
+  public GuessedLetters: ComputedRef<Set<string>>
+  public RightLetters: ComputedRef<Set<string>>
+  public AttemptsRemaining: ComputedRef<number>
 
   constructor(secretWord: string) {
     this.gameState = reactive({
@@ -42,13 +43,15 @@ export class GameManager {
     this.AttemptsRemaining = computed(() => this.gameState.errors)
     this.GuessedLetters = computed(() => this.gameState.guessedLetters)
     this.RightLetters = computed(() => this.gameState.rightLetters)
+    this.GameOver = computed(() => this.gameState.doneTodayGame)
+    this.Victory = computed(() => this.gameState.victory)
 
     this.loadStats()
     this.loadState()
   }
 
   guess(letter: string) {
-    if (this.GameOver.value === true) return
+    if (this.gameState.doneTodayGame === true) return
     if (this.gameState.guessedLetters.has(letter)) return
 
     this.gameState.guessedLetters.add(letter)
@@ -65,7 +68,7 @@ export class GameManager {
     this.saveState()
 
     if (this.checkCondition()) {
-      this.GameOver.value = true
+      this.gameState.doneTodayGame = true
       this.gameStats.gamesPlayed++
 
       this.updateCurrentStreak()
@@ -97,13 +100,13 @@ export class GameManager {
 
   checkCondition(): boolean {
     if (this.gameState.rightGuesses >= this.gameState.rightLetters.size) {
-      this.Victory.value = true
+      this.gameState.victory = true
       this.gameStats.wins += 1
       return true
     }
 
     if (this.gameState.errors <= 0) {
-      this.Victory.value = false
+      this.gameState.victory = false
       this.gameStats.losses += 1
       return true
     }
