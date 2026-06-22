@@ -31,6 +31,6 @@ export class SettingsManager {
 
   loadSettings() {
     const userSettings: GamePrefs = JSON.parse(localStorage.getItem(GAME_SETTINGS) || '')
-    return userSettings
+    this.gamePrefs = userSettings
   }
 }
