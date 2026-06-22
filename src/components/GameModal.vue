@@ -1,11 +1,25 @@
 <script setup lang="ts">
-import { DEFEAT_MESSAGE, LOSE_EMOJI, VICTORY_MESSAGE, WIN_EMOJI } from '@/utils/consts'
+import {
+  DEFEAT_MESSAGE,
+  GAME_MANAGER,
+  LOSE_EMOJI,
+  VICTORY_MESSAGE,
+  WIN_EMOJI,
+} from '@/utils/consts'
 import GameCountdown from './GameCountdown.vue'
+import { inject } from 'vue'
+import type { GameManager } from '@/game/GameManager.ts'
 
 defineProps<{
   show: boolean
   victory: boolean
 }>()
+
+const gameManager = inject<GameManager>(GAME_MANAGER)!
+function copyText() {
+  navigator.clipboard.writeText(gameManager.getGameResult())
+  emit('share')
+}
 
 const emit = defineEmits(['share', 'close-gameover'])
 </script>
@@ -37,7 +51,7 @@ const emit = defineEmits(['share', 'close-gameover'])
           </p>
 
           <div class="modal__actions">
-            <button class="btn btn--primary" @click="emit('share')">Compartilhar Resultado</button>
+            <button class="btn btn--primary" @click="copyText">Compartilhar Resultado</button>
           </div>
           <div class="modal__countdown-wrapper">
             <span class="modal__countdown-label">Próxima palavra em</span>

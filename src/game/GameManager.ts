@@ -39,6 +39,7 @@ export class GameManager {
     this.GuessedLetters = computed(() => this.gameState.guessedLetters)
 
     this.loadStats()
+    this.loadState()
   }
 
   guess(letter: string) {
@@ -55,6 +56,8 @@ export class GameManager {
       this.gameState.errors--
       this.gameState.gameResult += RED_TILE
     }
+
+    this.saveState()
 
     if (this.checkCondition()) {
       this.GameOver.value = true
@@ -103,7 +106,9 @@ export class GameManager {
     return false
   }
 
-  getGameResult() {}
+  getGameResult() {
+    return this.gameState.gameResult
+  }
 
   getState() {
     return this.gameState
