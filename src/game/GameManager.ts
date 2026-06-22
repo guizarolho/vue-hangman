@@ -121,8 +121,10 @@ export class GameManager {
     const data = localStorage.getItem(GAME_STATS)
     if (!data) return
     const parsed = JSON.parse(data) as GameStats
-    this.gameStats = parsed
-    this.gameStats.lastGame = new Date(parsed.lastGame)
+    this.gameStats = {
+      ...parsed,
+      lastGame: new Date(parsed.lastGame),
+    }
   }
 
   saveState() {
