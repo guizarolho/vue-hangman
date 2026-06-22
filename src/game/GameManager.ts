@@ -1,5 +1,5 @@
 import { reactive, ref, computed } from 'vue'
-import { GAME_STATE, GAME_STATS, MAX_ERRORS } from '@/utils/consts'
+import { GAME_STATE, GAME_STATS, GREEN_TILE, MAX_ERRORS, RED_TILE } from '@/utils/consts'
 import type { GameState } from './GameState'
 import type { GameStats } from './GameStats'
 import { checkStreak, saveDate } from '@/utils/time'
@@ -16,6 +16,7 @@ export class GameManager {
   constructor(secretWord: string) {
     this.gameState = reactive({
       secretWord: secretWord,
+      gameResult: '',
 
       rightLetters: new Set(secretWord),
       guessedLetters: new Set(),
@@ -49,8 +50,10 @@ export class GameManager {
 
     if (isCorrect) {
       this.gameState.rightGuesses++
+      this.gameState.gameResult += GREEN_TILE
     } else {
       this.gameState.errors--
+      this.gameState.gameResult += RED_TILE
     }
 
     if (this.checkCondition()) {
@@ -99,6 +102,8 @@ export class GameManager {
 
     return false
   }
+
+  getGameResult() {}
 
   getState() {
     return this.gameState

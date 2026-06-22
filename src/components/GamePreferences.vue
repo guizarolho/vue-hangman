@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GAME_SETTINGS, SUPPORT_EMAIL } from '@/utils/consts'
+import { CHAT_EMOJI, ECLIPSE_EMOJI, GAME_SETTINGS, SUN_EMOJI, SUPPORT_EMAIL } from '@/utils/consts'
 import { inject } from 'vue'
 import GameSlider from './GameSlider.vue'
 import type { GameSettingsManager } from '@/game/GameSettingsManager.ts'
@@ -40,7 +40,7 @@ function updateSettings(mode: boolean, value: boolean) {
             class="modal__option"
             @click="updateSettings(false, !settingsManager?.ContrastMode.value)"
           >
-            <span class="modal__option-icon">◑</span>
+            <span class="modal__option-icon">{{ ECLIPSE_EMOJI }}</span>
             <span class="modal__option-text">Contraste</span>
             <GameSlider :checked="settingsManager.ContrastMode.value" />
           </button>
@@ -49,13 +49,13 @@ function updateSettings(mode: boolean, value: boolean) {
             class="modal__option"
             @click="updateSettings(true, !settingsManager?.DarkMode.value)"
           >
-            <span class="modal__option-icon">☀️</span>
+            <span class="modal__option-icon">{{ SUN_EMOJI }}</span>
             <span class="modal__option-text">Modo (Escuro/Claro)</span>
             <GameSlider :checked="settingsManager.DarkMode.value" />
           </button>
 
           <button @click="sendemail" class="modal__option">
-            <span class="modal__option-icon">💬</span>
+            <span class="modal__option-icon">{{ CHAT_EMOJI }}</span>
             <span class="modal__option-text">Comentários</span>
           </button>
         </div>

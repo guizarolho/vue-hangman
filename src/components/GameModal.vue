@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DEFEAT_MESSAGE, VICTORY_MESSAGE } from '@/utils/consts'
+import { DEFEAT_MESSAGE, LOSE_EMOJI, VICTORY_MESSAGE, WIN_EMOJI } from '@/utils/consts'
 import GameCountdown from './GameCountdown.vue'
 
 defineProps<{
@@ -21,7 +21,7 @@ const emit = defineEmits(['share', 'close-gameover'])
 
         <div class="modal__content">
           <div class="modal__icon">
-            {{ victory ? '🎉' : '😢' }}
+            {{ victory ? WIN_EMOJI : LOSE_EMOJI }}
           </div>
 
           <h1 class="modal__title">

@@ -8,3 +8,7 @@ export const GAME_SETTINGS = 'gameSettings'
 export const GAME_STATE = 'gameState'
 export const GAME_STATS = 'gameStats'
 export const DAY_EPOCH_TIME = 86400000
+export const GREEN_TILE = '🟩'
+export const RED_TILE = '🟥'
+export const WIN_EMOJI = '🎉'
+export const LOSE_EMOJI = '😢'
