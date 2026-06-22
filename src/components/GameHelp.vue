@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { CLOVER_EMOJI } from '@/utils/consts'
+
 defineProps<{
   show: boolean
 }>()
@@ -17,7 +19,8 @@ const emit = defineEmits(['close-help'])
           <div class="help__content-objective">
             <p class="help__content-text">
               Adivinhe a palavra secreta letra por letra. Cada erro reduz suas tentativas restantes.
-              Revele todas as letras antes que elas acabem para vencer. Boa sorte! 🍀
+              Revele todas as letras antes que elas acabem para vencer. Boa sorte!
+              {{ CLOVER_EMOJI }}
             </p>
           </div>
         </div>
