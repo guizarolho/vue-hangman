@@ -1,28 +1,33 @@
 import type { GamePrefs } from './GamePrefs'
-import { computed } from 'vue'
+import { computed, reactive } from 'vue'
 import { GAME_SETTINGS } from '@/utils/consts'
 
-export class SettingsManager {
+export class GameSettingsManager {
   public DarkMode
   public ContrastMode
   private gamePrefs: GamePrefs
+
   constructor() {
-    this.gamePrefs = {
+    this.gamePrefs = reactive({
       darkMode: false,
       highContrastMode: false,
-    }
+    })
 
     this.DarkMode = computed(() => this.gamePrefs.darkMode)
     this.ContrastMode = computed(() => this.gamePrefs.highContrastMode)
+
+    this.loadSettings()
   }
 
   // use true for darkmode, false for highcontrastmode
-  setMode(mode: boolean, value: boolean) {
-    if (mode) {
+  setMode(isDarkMode: boolean, value: boolean) {
+    if (isDarkMode) {
       this.gamePrefs.darkMode = value
-      return
+    } else {
+      this.gamePrefs.highContrastMode = value
     }
-    this.gamePrefs.highContrastMode = value
+
+    this.saveSettings()
   }
 
   saveSettings() {
@@ -30,7 +35,11 @@ export class SettingsManager {
   }
 
   loadSettings() {
-    const userSettings: GamePrefs = JSON.parse(localStorage.getItem(GAME_SETTINGS) || '')
-    this.gamePrefs = userSettings
+    const data = localStorage.getItem(GAME_SETTINGS)
+    if (!data) return
+    const prefs = JSON.parse(data) as GamePrefs
+
+    this.gamePrefs.darkMode = prefs.darkMode
+    this.gamePrefs.highContrastMode = prefs.highContrastMode
   }
 }

@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { SUPPORT_EMAIL } from '@/utils/consts'
-import { ref } from 'vue'
+import { GAME_SETTINGS, SUPPORT_EMAIL } from '@/utils/consts'
+import { inject } from 'vue'
 import GameSlider from './GameSlider.vue'
+import type { GameSettingsManager } from '@/game/GameSettingsManager.ts'
 
 defineProps<{
   show: boolean
 }>()
 const emit = defineEmits(['close-pref'])
-const highContrastMode = ref<boolean>(false)
-const darkMode = ref<boolean>(false)
+const settingsManager = inject<GameSettingsManager>(GAME_SETTINGS)!
 
 function sendemail() {
   const subject = encodeURIComponent('Hang')
@@ -19,6 +19,10 @@ function sendemail() {
   const link = document.createElement('a')
   link.href = mailtoUrl
   link.click()
+}
+
+function updateSettings(mode: boolean, value: boolean) {
+  settingsManager?.setMode(mode, value)
 }
 </script>
 
@@ -32,16 +36,22 @@ function sendemail() {
         </header>
 
         <div class="modal__content">
-          <button class="modal__option" @click="highContrastMode = !highContrastMode">
+          <button
+            class="modal__option"
+            @click="updateSettings(false, !settingsManager?.ContrastMode.value)"
+          >
             <span class="modal__option-icon">◑</span>
             <span class="modal__option-text">Contraste</span>
-            <GameSlider :checked="highContrastMode" />
+            <GameSlider :checked="settingsManager.ContrastMode.value" />
           </button>
 
-          <button class="modal__option" @click="darkMode = !darkMode">
+          <button
+            class="modal__option"
+            @click="updateSettings(true, !settingsManager?.DarkMode.value)"
+          >
             <span class="modal__option-icon">☀️</span>
             <span class="modal__option-text">Modo (Escuro/Claro)</span>
-            <GameSlider :checked="darkMode" />
+            <GameSlider :checked="settingsManager.DarkMode.value" />
           </button>
 
           <button @click="sendemail" class="modal__option">

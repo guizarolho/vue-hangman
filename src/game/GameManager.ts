@@ -107,7 +107,8 @@ export class GameManager {
   }
 
   loadState() {
-    const savedState: GameState = JSON.parse(localStorage.getItem(GAME_STATE) || '')
-    this.gameState = savedState
+    const data = localStorage.getItem(GAME_STATE)
+    if (!data) return
+    this.gameState = JSON.parse(data)
   }
 }
