@@ -8,4 +8,7 @@ export interface GameState {
   rightGuesses: number
   errors: number
   resetTimer: number
+
+  doneTodayGame: false
+  victory: false
 }

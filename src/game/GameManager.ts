@@ -11,6 +11,7 @@ export class GameManager {
   public GameOver = ref<boolean>(false)
   public Victory = ref<boolean>(false)
   public GuessedLetters
+  public RightLetters
   public AttemptsRemaining
 
   constructor(secretWord: string) {
@@ -24,6 +25,9 @@ export class GameManager {
       errors: MAX_ERRORS,
       rightGuesses: 0,
       resetTimer: 0,
+
+      doneTodayGame: false,
+      victory: false,
     })
 
     this.gameStats = {
@@ -37,6 +41,7 @@ export class GameManager {
 
     this.AttemptsRemaining = computed(() => this.gameState.errors)
     this.GuessedLetters = computed(() => this.gameState.guessedLetters)
+    this.RightLetters = computed(() => this.gameState.rightLetters)
 
     this.loadStats()
     this.loadState()

@@ -65,7 +65,16 @@ function clear() {
 
 onMounted(() => {
   window.addEventListener('keydown', handleKeydown)
+
+  for (const element of gameManager.GuessedLetters.value) {
+    if (gameManager.RightLetters.value.has(element)) {
+      keyTiles[element]?.classList.add('right')
+    } else {
+      keyTiles[element]?.classList.add('wrong')
+    }
+  }
 })
+
 onUnmounted(() => {
   window.removeEventListener('keydown', handleKeydown)
 })
