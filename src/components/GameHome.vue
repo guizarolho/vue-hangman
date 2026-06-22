@@ -34,6 +34,8 @@ watch(
   },
 )
 
+if (gameManager.GameOver.value) showGameover.value = true
+
 provide(GAME_MANAGER, gameManager)
 provide(GAME_SETTINGS, settingsManager)
 </script>
