@@ -12,7 +12,7 @@ import GamePreferences from './GamePreferences.vue'
 import GameHelp from './GameHelp.vue'
 import GameStats from './GameStats.vue'
 import GameAttempts from './GameAttempts.vue'
-import GameWarningModal from './GameWarningModal.vue'
+import GameToast from './GameToast.vue'
 
 // const secretWord = 'FAKER'
 const secretWord = getDailyWord()
@@ -55,7 +55,7 @@ provide(GAME_SETTINGS, settingsManager)
     @open-help="showHelp = true"
     @open-stats="showStats = true"
   />
-  <GameWarningModal :show="showWarning" :text="secretWord" />
+  <GameToast :show="showWarning" :text="secretWord" />
   <div class="game__container">
     <div class="word__container">
       <GameTile
