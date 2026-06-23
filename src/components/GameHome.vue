@@ -13,7 +13,7 @@ import { GAME_MANAGER, GAME_SETTINGS } from '@/utils/consts.ts'
 import { GameSettingsManager } from '@/game/GameSettingsManager.ts'
 
 const secrets = ['KING', 'QUEEN', 'JACK', 'JOKER']
-const secretWord = secrets[3]
+const secretWord = secrets[0]
 
 const gameManager = new GameManager(secretWord ?? '')
 const settingsManager = new GameSettingsManager()

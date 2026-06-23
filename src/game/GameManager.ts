@@ -133,10 +133,10 @@ export class GameManager {
     const data = localStorage.getItem(GAME_STATS)
     if (!data) return
     const parsed = JSON.parse(data) as GameStats
-    this.gameStats = {
+    Object.assign(this.gameStats, {
       ...parsed,
       lastGame: new Date(parsed.lastGame),
-    }
+    })
   }
 
   saveState() {
@@ -153,8 +153,11 @@ export class GameManager {
   loadState() {
     const data = localStorage.getItem(GAME_STATE)
     if (!data) return
+
     const parsed = JSON.parse(data) as GameState
-    this.gameState = reactive({
+    if (parsed.secretWord !== this.gameState.secretWord) return
+
+    Object.assign(this.gameState, {
       ...parsed,
       rightLetters: new Set(parsed.rightLetters),
       guessedLetters: new Set(parsed.guessedLetters),
