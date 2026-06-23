@@ -9,6 +9,7 @@ import {
 import GameCountdown from './GameCountdown.vue'
 import { inject } from 'vue'
 import type { GameManager } from '@/game/GameManager.ts'
+import { CLOSE_GAMEOVER, SHARE } from '@/utils/emits.ts'
 
 defineProps<{
   show: boolean
@@ -18,20 +19,20 @@ defineProps<{
 const gameManager = inject<GameManager>(GAME_MANAGER)!
 function copyText() {
   navigator.clipboard.writeText(gameManager.getGameResult())
-  emit('share')
+  emit(SHARE)
 }
 
-const emit = defineEmits(['share', 'close-gameover'])
+const emit = defineEmits([SHARE, CLOSE_GAMEOVER])
 </script>
 
 <template>
   <Transition name="fade">
-    <div v-if="show" class="modal__overlay" @click.self="emit('close-gameover')">
+    <div v-if="show" class="modal__overlay" @click.self="emit(CLOSE_GAMEOVER)">
       <div
         class="modal__container"
         :class="{ 'modal__container--victory': victory, 'modal__container--defeat': !victory }"
       >
-        <button class="modal__close-btn" @click="emit('close-gameover')">&times;</button>
+        <button class="modal__close-btn" @click="emit(CLOSE_GAMEOVER)">&times;</button>
 
         <div class="modal__content">
           <div class="modal__icon">

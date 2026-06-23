@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import type { GameManager } from '@/game/GameManager'
 import { GAME_MANAGER } from '@/utils/consts'
+import { OPEN_GAMEOVER } from '@/utils/emits'
 import { inject, onMounted, onUnmounted, ref } from 'vue'
 
 const selected = ref<string>('')
 const gameManager = inject<GameManager>(GAME_MANAGER)!
 const keyTiles: { [key: string]: HTMLButtonElement } = {}
-const emit = defineEmits(['open-gameover'])
+const emit = defineEmits([OPEN_GAMEOVER])
 
 const keyboardRows: string[][] = [
   ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
@@ -38,7 +39,7 @@ function guess() {
 
 function checkGameover() {
   if (gameManager.GameOver.value) {
-    emit('open-gameover')
+    emit(OPEN_GAMEOVER)
     return
   }
 }

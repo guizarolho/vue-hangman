@@ -1,14 +1,15 @@
 <script setup lang="ts">
-const emit = defineEmits(['open-pref', 'open-help', 'open-stats'])
+import { OPEN_HELP, OPEN_PREFERENCES, OPEN_STATS } from '@/utils/emits'
+const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
 </script>
 
 <template>
   <header class="header__container">
     <div class="header__content">
       <nav class="header__group header__group--left">
-        <a class="header__button" @click="emit('open-help')">Ajuda</a>
-        <a class="header__button" @click="emit('open-stats')">Estatísticas</a>
-        <a class="header__button" @click="emit('open-pref')">Preferências</a>
+        <a class="header__button" @click="emit(OPEN_HELP)">Ajuda</a>
+        <a class="header__button" @click="emit(OPEN_STATS)">Estatísticas</a>
+        <a class="header__button" @click="emit(OPEN_PREFERENCES)">Preferências</a>
       </nav>
 
       <div class="header__center">

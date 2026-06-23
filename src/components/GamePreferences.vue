@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { CHAT_EMOJI, ECLIPSE_EMOJI, GAME_SETTINGS, SUN_EMOJI, SUPPORT_EMAIL } from '@/utils/consts'
+import { CLOSE_PREFERENCES } from '@/utils/emits.ts'
 import { inject } from 'vue'
 import GameSlider from './GameSlider.vue'
 import type { GameSettingsManager } from '@/game/GameSettingsManager.ts'
@@ -7,7 +8,7 @@ import type { GameSettingsManager } from '@/game/GameSettingsManager.ts'
 defineProps<{
   show: boolean
 }>()
-const emit = defineEmits(['close-pref'])
+const emit = defineEmits([CLOSE_PREFERENCES])
 const settingsManager = inject<GameSettingsManager>(GAME_SETTINGS)!
 
 function sendemail() {
@@ -28,11 +29,11 @@ function updateSettings(mode: boolean, value: boolean) {
 
 <template>
   <Transition name="fade">
-    <div v-if="show" class="modal__overlay" @click.self="emit('close-pref')">
+    <div v-if="show" class="modal__overlay" @click.self="emit(CLOSE_PREFERENCES)">
       <div class="modal__container">
         <header class="modal__header">
           <h2 class="modal__title">Preferences</h2>
-          <button class="modal__close-btn" @click="emit('close-pref')">✕</button>
+          <button class="modal__close-btn" @click="emit(CLOSE_PREFERENCES)">✕</button>
         </header>
 
         <div class="modal__content">

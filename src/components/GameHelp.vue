@@ -1,19 +1,20 @@
 <script setup lang="ts">
 import { CLOVER_EMOJI } from '@/utils/consts'
+import { CLOSE_HELP } from '@/utils/emits'
 
 defineProps<{
   show: boolean
 }>()
-const emit = defineEmits(['close-help'])
+const emit = defineEmits([CLOSE_HELP])
 </script>
 
 <template>
   <Transition name="fade">
-    <div v-if="show" @click.self="emit('close-help')" class="help__overlay">
+    <div v-if="show" @click.self="emit(CLOSE_HELP)" class="help__overlay">
       <div class="help__container">
         <header class="help__header">
           <h2 class="help__title">Help</h2>
-          <button class="help__close-btn" @click="emit('close-help')">✕</button>
+          <button class="help__close-btn" @click="emit(CLOSE_HELP)">✕</button>
         </header>
         <div class="help__content">
           <div class="help__content-objective">

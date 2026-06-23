@@ -1,23 +1,24 @@
 <script setup lang="ts">
 import type { GameManager } from '@/game/GameManager'
 import { GAME_MANAGER } from '@/utils/consts'
+import { CLOSE_STATS } from '@/utils/emits'
 import { inject } from 'vue'
 
 defineProps<{
   show: boolean
 }>()
-const emit = defineEmits(['close-stats'])
+const emit = defineEmits([CLOSE_STATS])
 const gameManager = inject<GameManager>(GAME_MANAGER)!
 const gameStats = gameManager.getStats()
 </script>
 
 <template>
   <Transition name="fade">
-    <div v-if="show" @click.self="emit('close-stats')" class="stats__overlay">
+    <div v-if="show" @click.self="emit(CLOSE_STATS)" class="stats__overlay">
       <div class="stats__container">
         <div class="stats__header">
           <div class="stats__title">Estatísticas</div>
-          <button class="stats__close-btn" @click.self="emit('close-stats')">✕</button>
+          <button class="stats__close-btn" @click.self="emit(CLOSE_STATS)">✕</button>
         </div>
         <div class="stats__content">
           <div class="stats__option">
