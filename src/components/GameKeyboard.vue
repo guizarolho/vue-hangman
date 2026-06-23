@@ -32,8 +32,11 @@ function guess() {
   const result = gameManager.guess(selected.value)
   if (result === undefined) return
 
-  keyTiles[selected.value]?.classList.remove('highlight')
-  keyTiles[selected.value]?.classList.add(result ? 'right' : 'wrong')
+  const targetTile = keyTiles[selected.value]!
+  targetTile.classList.remove('highlight')
+  targetTile.classList.add(result ? 'right' : 'wrong')
+  targetTile.disabled = true
+
   selected.value = ''
 }
 
@@ -68,11 +71,13 @@ onMounted(() => {
   window.addEventListener('keydown', handleKeydown)
 
   for (const element of gameManager.GuessedLetters.value) {
+    const targetTile = keyTiles[element]!
     if (gameManager.RightLetters.value.has(element)) {
-      keyTiles[element]?.classList.add('right')
+      targetTile.classList.add('right')
     } else {
-      keyTiles[element]?.classList.add('wrong')
+      targetTile.classList.add('wrong')
     }
+    targetTile.disabled = true
   }
 })
 

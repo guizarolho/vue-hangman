@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { provide, ref, watch } from 'vue'
+import { GAME_MANAGER, GAME_SETTINGS } from '@/utils/consts.ts'
 import GameHeader from './GameHeader.vue'
 import GameTile from './GameTile.vue'
 import GameKeyboard from './GameKeyboard.vue'
@@ -9,11 +10,10 @@ import GameHelp from './GameHelp.vue'
 import GameStats from './GameStats.vue'
 import GameAttempts from './GameAttempts.vue'
 import { GameManager } from '../game/GameManager.ts'
-import { GAME_MANAGER, GAME_SETTINGS } from '@/utils/consts.ts'
 import { GameSettingsManager } from '@/game/GameSettingsManager.ts'
 
 const secrets = ['KING', 'QUEEN', 'JACK', 'JOKER']
-const secretWord = secrets[0]
+const secretWord = secrets[1]
 
 const gameManager = new GameManager(secretWord ?? '')
 const settingsManager = new GameSettingsManager()
