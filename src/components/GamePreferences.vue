@@ -32,7 +32,7 @@ function updateSettings(mode: boolean, value: boolean) {
     <div v-if="show" class="modal__overlay" @click.self="emit(CLOSE_PREFERENCES)">
       <div class="modal__container">
         <header class="modal__header">
-          <h2 class="modal__title">Preferences</h2>
+          <h2 class="modal__title">Preferências</h2>
           <button class="modal__close-btn" @click="emit(CLOSE_PREFERENCES)">✕</button>
         </header>
 

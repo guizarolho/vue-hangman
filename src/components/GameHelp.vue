@@ -13,7 +13,7 @@ const emit = defineEmits([CLOSE_HELP])
     <div v-if="show" @click.self="emit(CLOSE_HELP)" class="help__overlay">
       <div class="help__container">
         <header class="help__header">
-          <h2 class="help__title">Help</h2>
+          <h2 class="help__title">Ajuda</h2>
           <button class="help__close-btn" @click="emit(CLOSE_HELP)">✕</button>
         </header>
         <div class="help__content">

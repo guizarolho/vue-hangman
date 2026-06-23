@@ -17,7 +17,7 @@ const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
       </div>
 
       <div class="header__group header__group--right">
-        <RouterLink to="/about" class="header__button">About</RouterLink>
+        <RouterLink to="/about" class="header__button">Sobre</RouterLink>
       </div>
     </div>
   </header>
