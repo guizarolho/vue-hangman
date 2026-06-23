@@ -14,7 +14,11 @@ export function checkStreak(lastGame: Date): boolean {
   return distance < DAY_EPOCH_TIME
 }
 
-export function checkToday(lastGame: Date): boolean {
-  const today = new Date()
-  return lastGame.toDateString() === today.toDateString()
+// https://www.reddit.com/r/webdev/comments/tpwzgh/how_to_make_a_once_per_day_limit_on_a_wordlelike/
+export function getWordIndex(solutions: number) {
+  const date = new Date()
+  date.setHours(0, 0, 0, 0)
+
+  const dateEpoch = Math.floor(date.getTime() / DAY_EPOCH_TIME)
+  return dateEpoch % solutions
 }

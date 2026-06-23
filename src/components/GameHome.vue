@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { provide, ref, watch } from 'vue'
 import { GAME_MANAGER, GAME_SETTINGS } from '@/utils/consts.ts'
+import { getDailyWord, normalizeText } from '@/utils/text.ts'
+import { GameManager } from '../game/GameManager.ts'
+import { GameSettingsManager } from '@/game/GameSettingsManager.ts'
 import GameHeader from './GameHeader.vue'
 import GameTile from './GameTile.vue'
 import GameKeyboard from './GameKeyboard.vue'
@@ -9,13 +12,8 @@ import GamePreferences from './GamePreferences.vue'
 import GameHelp from './GameHelp.vue'
 import GameStats from './GameStats.vue'
 import GameAttempts from './GameAttempts.vue'
-import { GameManager } from '../game/GameManager.ts'
-import { GameSettingsManager } from '@/game/GameSettingsManager.ts'
-import { normalizeText } from '@/utils/text.ts'
 
-const secrets = ['KING', 'QUEEN', 'JACK', 'JOKER', 'MÃOS']
-const secretWord = secrets[4]
-
+const secretWord = getDailyWord()
 const gameManager = new GameManager(secretWord ?? '')
 const settingsManager = new GameSettingsManager()
 
