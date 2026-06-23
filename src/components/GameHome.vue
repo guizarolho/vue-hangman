@@ -11,9 +11,10 @@ import GameStats from './GameStats.vue'
 import GameAttempts from './GameAttempts.vue'
 import { GameManager } from '../game/GameManager.ts'
 import { GameSettingsManager } from '@/game/GameSettingsManager.ts'
+import { normalizeText } from '@/utils/text.ts'
 
-const secrets = ['KING', 'QUEEN', 'JACK', 'JOKER']
-const secretWord = secrets[1]
+const secrets = ['KING', 'QUEEN', 'JACK', 'JOKER', 'MÃOS']
+const secretWord = secrets[4]
 
 const gameManager = new GameManager(secretWord ?? '')
 const settingsManager = new GameSettingsManager()
@@ -53,7 +54,7 @@ provide(GAME_SETTINGS, settingsManager)
         v-for="(char, index) in [...(secretWord ?? '')]"
         :key="index"
         :letter="char"
-        :hidden="!gameManager.GuessedLetters.value.has(char)"
+        :hidden="!gameManager.GuessedLetters.value.has(normalizeText(char))"
       />
     </div>
 

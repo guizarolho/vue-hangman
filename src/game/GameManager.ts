@@ -4,6 +4,7 @@ import { GAME_STATE, GAME_STATS, GREEN_TILE, MAX_ERRORS, RED_TILE } from '@/util
 import type { GameState } from './GameState'
 import type { GameStats } from './GameStats'
 import { checkStreak, saveDate } from '@/utils/time'
+import { normalizeText } from '@/utils/text'
 
 export class GameManager {
   private gameState: GameState
@@ -20,7 +21,7 @@ export class GameManager {
       secretWord: secretWord,
       gameResult: '',
 
-      rightLetters: new Set(secretWord),
+      rightLetters: new Set(normalizeText(secretWord)),
       guessedLetters: new Set(),
 
       errors: MAX_ERRORS,
