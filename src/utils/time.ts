@@ -13,3 +13,8 @@ export function checkStreak(lastGame: Date): boolean {
 
   return distance < DAY_EPOCH_TIME
 }
+
+export function checkToday(lastGame: Date): boolean {
+  const today = new Date()
+  return lastGame.toDateString() === today.toDateString()
+}
