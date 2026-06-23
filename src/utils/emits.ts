@@ -7,5 +7,3 @@ export const CLOSE_PREFERENCES = 'close-pref'
 export const CLOSE_HELP = 'close-help'
 export const CLOSE_STATS = 'close-stats'
 export const CLOSE_GAMEOVER = 'close-gameover'
-
-export const SHARE = 'share'

@@ -9,7 +9,7 @@ import {
 import GameCountdown from './GameCountdown.vue'
 import { inject } from 'vue'
 import type { GameManager } from '@/game/GameManager.ts'
-import { CLOSE_GAMEOVER, SHARE } from '@/utils/emits.ts'
+import { CLOSE_GAMEOVER } from '@/utils/emits.ts'
 
 defineProps<{
   show: boolean
@@ -17,12 +17,19 @@ defineProps<{
 }>()
 
 const gameManager = inject<GameManager>(GAME_MANAGER)!
-function copyText() {
+function copyText(button: HTMLButtonElement) {
   navigator.clipboard.writeText(gameManager.getGameResult())
-  emit(SHARE)
+  const originalText: string = button.textContent
+  button.textContent = 'Copiado!'
+  button.disabled = true
+
+  setTimeout(() => {
+    button.textContent = originalText
+    button.disabled = false
+  }, 2000)
 }
 
-const emit = defineEmits([SHARE, CLOSE_GAMEOVER])
+const emit = defineEmits([CLOSE_GAMEOVER])
 </script>
 
 <template>
@@ -52,7 +59,12 @@ const emit = defineEmits([SHARE, CLOSE_GAMEOVER])
           </p>
 
           <div class="modal__actions">
-            <button class="btn btn--primary" @click="copyText">Compartilhar Resultado</button>
+            <button
+              class="btn btn--primary"
+              @click="copyText($event.currentTarget as HTMLButtonElement)"
+            >
+              Compartilhar Resultado
+            </button>
           </div>
           <div class="modal__countdown-wrapper">
             <span class="modal__countdown-label">Próxima palavra em</span>

@@ -12,7 +12,9 @@ import GamePreferences from './GamePreferences.vue'
 import GameHelp from './GameHelp.vue'
 import GameStats from './GameStats.vue'
 import GameAttempts from './GameAttempts.vue'
+import GameWarningModal from './GameWarningModal.vue'
 
+// const secretWord = 'FAKER'
 const secretWord = getDailyWord()
 const gameManager = new GameManager(secretWord ?? '')
 const settingsManager = new GameSettingsManager()
@@ -21,19 +23,27 @@ const showGameover = ref(false)
 const showPreferences = ref(false)
 const showHelp = ref(false)
 const showStats = ref(false)
+const showWarning = ref(false)
 
 // https://vuejs.org/guide/essentials/watchers
 watch(
   () => gameManager.GameOver.value,
   (value) => {
     if (value) {
-      showGameover.value = true
+      activateGameoverModals()
       console.log('game over')
     }
   },
 )
 
-if (gameManager.GameOver.value) showGameover.value = true
+if (gameManager.GameOver.value) {
+  activateGameoverModals()
+}
+
+function activateGameoverModals() {
+  showGameover.value = true
+  if (!gameManager.Victory.value) showWarning.value = true
+}
 
 provide(GAME_MANAGER, gameManager)
 provide(GAME_SETTINGS, settingsManager)
@@ -45,7 +55,7 @@ provide(GAME_SETTINGS, settingsManager)
     @open-help="showHelp = true"
     @open-stats="showStats = true"
   />
-
+  <GameWarningModal :show="showWarning" :text="secretWord" />
   <div class="game__container">
     <div class="word__container">
       <GameTile
