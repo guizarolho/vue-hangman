@@ -19,9 +19,15 @@ defineProps<{
   width: 40px;
   height: 20px;
   margin: 10px;
-  border: 0.2rem solid lightgrey;
+  border: 0.2rem solid rgb(236, 179, 179);
   border-radius: 100px;
-  background: lightgrey;
+  background: rgb(236, 179, 179);
+  transition: all 0.3s ease-in-out;
+}
+
+.slider__container-active {
+  border: 0.2rem solid rgb(179, 236, 179);
+  background: rgb(179, 236, 179);
 }
 
 .slider__container-active .slider__spacer {
@@ -32,7 +38,7 @@ defineProps<{
   width: 50%;
   height: 100%;
   border-radius: 100px;
-  background: grey;
+  background: #f8fafc;
 }
 
 .slider__spacer {
