@@ -4,16 +4,20 @@
 <style>
 :root {
   --color-success: green;
-  --color-selection: yellow;
+  --color-success-light: #10b981;
   --color-error: red;
+  --color-error-light: #ef4444;
+  --color-selection: yellow;
+
   --color-white: white;
   --color-black: black;
 
   --keyboard: #818384;
   --keyboard-hover: #9a9c9d;
 
-  --bg-primary: #ffffff;
-  --bg-secondary: #f5f5f5;
+  --bg-primary: #f8fafc;
+  --bg-outline: #e2e8f0;
+  --bg-secondary: #f1f5f9;
   --bg-blur: rgba(15, 23, 42, 0.6);
 
   --text-primary: #111827;

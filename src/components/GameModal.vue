@@ -104,7 +104,7 @@ function copyText(button: HTMLButtonElement) {
 }
 
 .gameover-container {
-  background: #ffffff;
+  background: var(--color-white);
   width: 90%;
   max-width: 400px;
   border-radius: 28px;
@@ -195,23 +195,23 @@ function copyText(button: HTMLButtonElement) {
 }
 
 .btn-share--victory {
-  background-color: #10b981;
-  color: #ffffff;
+  background-color: var(--color-success);
+  color: var(--color-white);
   box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
 }
 .btn-share--victory:hover {
-  background-color: #059669;
+  background-color: var(--color-success-light);
   transform: translateY(-2px);
   box-shadow: 0 12px 20px -3px rgba(16, 185, 129, 0.4);
 }
 
 .btn-share--defeat {
-  background-color: #ef4444;
-  color: #ffffff;
+  background-color: var(--color-error);
+  color: var(--color-white);
   box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.3);
 }
 .btn-share--defeat:hover {
-  background-color: #dc2626;
+  background-color: var(--color-error-light);
   transform: translateY(-2px);
   box-shadow: 0 12px 20px -3px rgba(239, 68, 68, 0.4);
 }

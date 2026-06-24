@@ -20,7 +20,7 @@ defineProps<{
   width: 20px;
   border-radius: 20px;
 
-  background: black;
+  background: var(--color-black);
 }
 
 .radial__inner {
@@ -32,11 +32,11 @@ defineProps<{
   width: 80%;
   border-radius: 20px;
 
-  background: black;
+  background: var(--color-black);
   transition: background 0.3s ease-in-out;
 }
 
 .radial__inner-empty {
-  background: white;
+  background: var(--color-white);
 }
 </style>

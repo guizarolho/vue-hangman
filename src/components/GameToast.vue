@@ -44,12 +44,6 @@ defineProps<{
   justify-content: center;
 }
 
-.warning-text {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .toast-enter-from,
 .toast-leave-to {
   opacity: 0;

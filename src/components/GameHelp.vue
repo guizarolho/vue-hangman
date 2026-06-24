@@ -62,7 +62,7 @@ const emit = defineEmits([CLOSE_HELP])
 }
 
 .help-container {
-  background: #ffffff;
+  background: var(--color-white);
   width: 90%;
   max-width: 420px;
   border-radius: 24px;

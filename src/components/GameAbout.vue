@@ -108,7 +108,7 @@
 }
 
 .bio__card {
-  background: #ffffff;
+  background: var(--color-white);
   width: 100%;
   max-width: 440px;
   padding: 40px 32px;
@@ -138,7 +138,7 @@
 .title__container h1 {
   font-size: 28px;
   font-weight: 800;
-  color: #0f172a;
+  color: var(--text-primary);
   margin: 0 0 16px 0;
   letter-spacing: -0.5px;
 }
@@ -156,7 +156,7 @@
 
 .content__container .content span {
   font-weight: 600;
-  color: #0f172a;
+  color: var(--text-primary);
 }
 
 .divider {
@@ -176,7 +176,7 @@
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #64748b;
+  color: var(--text-secondary);
   margin: 0 0 6px 0;
   font-weight: 700;
 }
@@ -184,7 +184,7 @@
 .disclaimer {
   font-size: 13px;
   line-height: 1.5;
-  color: #64748b;
+  color: var(--text-secondary);
 }
 
 .footer__container .copyright {

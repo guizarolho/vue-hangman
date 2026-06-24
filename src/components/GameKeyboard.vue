@@ -160,15 +160,23 @@ onUnmounted(() => {
 }
 
 .keyboard__button.right {
-  background: var(--color-success) !important;
+  background: var(--color-success);
   cursor: not-allowed;
   transition: background-color 0.6s ease;
 }
 
+.keyboard__button.right:hover {
+  background: var(--color-success-light);
+}
+
 .keyboard__button.wrong {
-  background: var(--color-error) !important;
+  background: var(--color-error);
   cursor: not-allowed;
   transition: background-color 0.6s ease;
+}
+
+.keyboard__button.wrong:hover {
+  background: var(--color-error-light);
 }
 
 .keyboard__button.highlight {

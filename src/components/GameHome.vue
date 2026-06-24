@@ -93,19 +93,6 @@ provide(GAME_SETTINGS, settingsManager)
     'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-:root {
-  --color-primary: #4f46e5;
-  --color-secondary: #7c3aed;
-  --color-success: green;
-  --color-error: red;
-
-  --bg-primary: #ffffff;
-  --bg-secondary: #f5f5f5;
-
-  --text-primary: #111827;
-  --text-secondary: #6b7280;
-}
-
 .game__container {
   display: flex;
   flex-direction: row;

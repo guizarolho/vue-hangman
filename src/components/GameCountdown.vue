@@ -45,8 +45,8 @@ onUnmounted(() => {
 <style scoped>
 .timer__container {
   display: inline-flex;
-  background-color: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--bg-outline);
   padding: 6px 16px;
   border-radius: 20px;
 }

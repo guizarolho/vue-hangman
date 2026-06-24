@@ -26,8 +26,8 @@ const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
 <style scoped>
 .header__container {
   width: 100%;
-  background: var(--bg-primary);
-  border-bottom: 1px solid #e5e7eb;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--bg-outline);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
@@ -76,7 +76,7 @@ const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
   padding: 0.5rem 1.25rem;
   border-radius: 8px;
 
-  background: #f3f4f6;
+  background: var(--bg-secondary);
   color: var(--text-secondary);
 
   font-size: 0.9rem;
@@ -89,7 +89,7 @@ const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
 
 .header__button:hover {
   color: var(--text-primary);
-  background: #e5e7eb;
+  background: var(--bg-primary);
   transform: translateY(-1px);
 }
 

@@ -93,7 +93,7 @@ function updateSettings(mode: boolean, value: boolean) {
 }
 
 .preferences-container {
-  background: #ffffff;
+  background: var(--color-white);
   width: 90%;
   max-width: 420px;
   border-radius: 24px;
@@ -133,7 +133,7 @@ function updateSettings(mode: boolean, value: boolean) {
 }
 
 .preferences-close-btn:hover {
-  color: #111827;
+  color: var(--text-primary);
   background: #e5e7eb;
 }
 
