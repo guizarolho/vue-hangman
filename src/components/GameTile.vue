@@ -55,17 +55,17 @@ const props = defineProps<{
 
   font-size: 4rem;
   font-weight: bold;
-  color: white;
+  color: var(--color-white);
 
   backface-visibility: hidden;
 }
 
 .game-tile__face--front {
-  background: green;
+  background: var(--color-success);
   transform: rotateY(180deg);
 }
 
 .game-tile__face--back {
-  background: red;
+  background: var(--color-error);
 }
 </style>

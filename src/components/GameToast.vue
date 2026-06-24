@@ -30,8 +30,8 @@ defineProps<{
 }
 
 .warning-content {
-  background: green;
-  color: white;
+  background: var(--color-success);
+  color: var(--color-white);
 
   padding: 0.75rem 1.5rem;
   border-radius: 50px;

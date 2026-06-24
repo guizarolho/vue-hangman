@@ -29,35 +29,47 @@ function updateSettings(mode: boolean, value: boolean) {
 
 <template>
   <Transition name="fade">
-    <div v-if="show" class="modal__overlay" @click.self="emit(CLOSE_PREFERENCES)">
-      <div class="modal__container">
-        <header class="modal__header">
-          <h2 class="modal__title">Preferências</h2>
-          <button class="modal__close-btn" @click="emit(CLOSE_PREFERENCES)">✕</button>
+    <div v-if="show" class="preferences-overlay" @click.self="emit(CLOSE_PREFERENCES)">
+      <div class="preferences-container">
+        <header class="preferences-header">
+          <h2 class="preferences-title">Preferências</h2>
+          <button class="preferences-close-btn" @click="emit(CLOSE_PREFERENCES)">✕</button>
         </header>
 
-        <div class="modal__content">
+        <div class="preferences-content">
           <button
-            class="modal__option"
+            class="preferences-option"
             @click="updateSettings(false, !settingsManager?.ContrastMode.value)"
           >
-            <span class="modal__option-icon">{{ ECLIPSE_EMOJI }}</span>
-            <span class="modal__option-text">Contraste</span>
+            <div class="option-left">
+              <span class="option-icon-wrapper contrast-icon">
+                {{ ECLIPSE_EMOJI }}
+              </span>
+              <span class="option-text">Alto Contraste</span>
+            </div>
             <GameSlider :checked="settingsManager.ContrastMode.value" />
           </button>
 
           <button
-            class="modal__option"
+            class="preferences-option"
             @click="updateSettings(true, !settingsManager?.DarkMode.value)"
           >
-            <span class="modal__option-icon">{{ SUN_EMOJI }}</span>
-            <span class="modal__option-text">Modo (Escuro/Claro)</span>
+            <div class="option-left">
+              <span class="option-icon-wrapper dark-icon">
+                {{ SUN_EMOJI }}
+              </span>
+              <span class="option-text">Modo Escuro</span>
+            </div>
             <GameSlider :checked="settingsManager.DarkMode.value" />
           </button>
 
-          <button @click="sendemail" class="modal__option">
-            <span class="modal__option-icon">{{ CHAT_EMOJI }}</span>
-            <span class="modal__option-text">Comentários</span>
+          <button @click="sendemail" class="preferences-option feedback-option">
+            <div class="option-left">
+              <span class="option-icon-wrapper feedback-icon">
+                {{ CHAT_EMOJI }}
+              </span>
+              <span class="option-text">Sugestões e Feedback</span>
+            </div>
           </button>
         </div>
       </div>
@@ -66,107 +78,128 @@ function updateSettings(mode: boolean, value: boolean) {
 </template>
 
 <style scoped>
-.modal__overlay {
+.preferences-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px);
-
+  background-color: var(--bg-blur);
+  backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
 }
 
-.modal__container {
-  background: white;
-  width: 100%;
-  max-width: 400px;
-  border-radius: 16px;
+.preferences-container {
+  background: #ffffff;
+  width: 90%;
+  max-width: 420px;
+  border-radius: 24px;
   box-shadow:
-    0 10px 25px -5px rgba(0, 0, 0, 0.4),
-    0 8px 10px -6px rgba(0, 0, 0, 0.4);
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
   overflow: hidden;
-  animation: scaleUp 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.modal__header {
+.preferences-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25rem 1.5rem;
-  border-bottom: 1px solid lightgrey;
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
 }
 
-.modal__title {
+.preferences-title {
   margin: 0;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #111827;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-primary);
 }
 
-.modal__close-btn {
-  background: none;
+.preferences-close-btn {
+  background: #f8fafc;
   border: none;
-  font-size: 1.1rem;
-  color: #9ca3af;
+  font-size: 0.9rem;
+  color: #64748b;
   cursor: pointer;
-  padding: 0.25rem;
-  transition: color 0.2s;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
 }
 
-.modal__close-btn:hover {
+.preferences-close-btn:hover {
   color: #111827;
+  background: #e5e7eb;
 }
 
-.modal__content {
-  padding: 1rem;
+.preferences-content {
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.85rem;
 }
 
-.modal__option {
+.preferences-option {
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 0.85rem 1rem;
-  background: transparent;
-  border: none;
-  border-radius: 10px;
+  justify-content: space-between;
+  padding: 0.85rem 1.15rem;
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 16px;
   cursor: pointer;
   text-align: left;
-  transition: background-color 0.15s ease;
+  transition: all 0.2s ease-in-out;
 }
 
-.modal__option:hover {
-  background-color: grey;
+.preferences-option:hover {
+  color: #111827;
+  background: #e5e7eb;
+  transform: translateY(-1px);
 }
 
-.modal__option:active {
-  background-color: aliceblue;
+.preferences-option:active {
+  background-color: #e5e7eb;
+  transform: translateY(1px);
 }
 
-.modal__option-icon {
-  font-size: 1.2rem;
-  width: 24px;
-  display: inline-flex;
+.option-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.option-icon-wrapper {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
 }
 
-.modal__option-text {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #374151;
+.option-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.2s ease;
+  transition: opacity 0.25s ease;
+}
+
+.fade-enter-active .preferences-container,
+.fade-leave-active .preferences-container {
+  transition: transform 0.25s ease-out;
 }
 
 .fade-enter-from,
@@ -174,12 +207,8 @@ function updateSettings(mode: boolean, value: boolean) {
   opacity: 0;
 }
 
-@keyframes scaleUp {
-  from {
-    transform: scale(0.95);
-  }
-  to {
-    transform: scale(1);
-  }
+.fade-enter-from .preferences-container,
+.fade-leave-to .preferences-container {
+  transform: scale(0.92);
 }
 </style>

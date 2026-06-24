@@ -11,7 +11,7 @@
         </div>
 
         <div class="title__container">
-          <h1>Olá! 👋</h1>
+          <h1>Olá!</h1>
         </div>
 
         <div class="content__container">

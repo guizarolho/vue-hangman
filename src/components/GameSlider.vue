@@ -19,15 +19,15 @@ defineProps<{
   width: 40px;
   height: 20px;
   margin: 10px;
-  border: 0.2rem solid rgb(236, 179, 179);
+  border: 0.2rem solid var(--slider-off);
   border-radius: 100px;
-  background: rgb(236, 179, 179);
+  background: var(--slider-off);
   transition: all 0.3s ease-in-out;
 }
 
 .slider__container-active {
-  border: 0.2rem solid rgb(179, 236, 179);
-  background: rgb(179, 236, 179);
+  border: 0.2rem solid var(--slider-on);
+  background: var(--slider-on);
 }
 
 .slider__container-active .slider__spacer {

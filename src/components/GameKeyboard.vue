@@ -132,7 +132,7 @@ onUnmounted(() => {
   border: none;
   border-radius: 4px;
 
-  background: #818384;
+  background: var(--keyboard);
   color: white;
 
   font-size: 1rem;
@@ -147,44 +147,33 @@ onUnmounted(() => {
 
 .keyboard__row > button.keyboard__enter {
   font-size: 0.6rem;
-  background-color: black;
+  background-color: var(--color-black);
 }
 
 .keyboard__row button:hover {
-  background: #9a9c9d;
+  background: var(--keyboard-hover);
+  transform: translateY(-1px);
 }
 
 .keyboard__row button:active {
-  transform: scale(0.95);
+  transform: scale(0.95) translateY(0px);
 }
 
 .keyboard__button.right {
-  background: green;
-  cursor: initial;
+  background: var(--color-success) !important;
+  cursor: not-allowed;
   transition: background-color 0.6s ease;
 }
 
 .keyboard__button.wrong {
-  background: red;
-  cursor: initial;
+  background: var(--color-error) !important;
+  cursor: not-allowed;
   transition: background-color 0.6s ease;
 }
 
 .keyboard__button.highlight {
-  background: yellow;
-  color: black;
+  background: var(--color-selection) !important;
+  color: black !important;
   transition: background-color 0.1 ease;
-}
-
-.keyboard__button {
-  background: #818384;
-}
-
-.keyboard__container > button:hover {
-  background: #9a9c9d;
-}
-
-.keyboard__container > button:active {
-  transform: scale(0.95);
 }
 </style>

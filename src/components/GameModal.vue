@@ -17,40 +17,46 @@ defineProps<{
 }>()
 
 const gameManager = inject<GameManager>(GAME_MANAGER)!
+const emit = defineEmits([CLOSE_GAMEOVER])
+
 function copyText(button: HTMLButtonElement) {
   navigator.clipboard.writeText(gameManager.getGameResult())
-  const originalText: string = button.textContent
+  const originalText: string = button.textContent || 'Compartilhar Resultado'
+
   button.textContent = 'Copiado!'
+  button.classList.add('btn--success')
   button.disabled = true
 
   setTimeout(() => {
     button.textContent = originalText
+    button.classList.remove('btn--success')
     button.disabled = false
   }, 2000)
 }
-
-const emit = defineEmits([CLOSE_GAMEOVER])
 </script>
 
 <template>
   <Transition name="fade">
-    <div v-if="show" class="modal__overlay" @click.self="emit(CLOSE_GAMEOVER)">
+    <div v-if="show" class="gameover-overlay" @click.self="emit(CLOSE_GAMEOVER)">
       <div
-        class="modal__container"
-        :class="{ 'modal__container--victory': victory, 'modal__container--defeat': !victory }"
+        class="gameover-container"
+        :class="{ 'gameover-container--victory': victory, 'gameover-container--defeat': !victory }"
       >
-        <button class="modal__close-btn" @click="emit(CLOSE_GAMEOVER)">&times;</button>
+        <button class="gameover-close-btn" @click="emit(CLOSE_GAMEOVER)">✕</button>
 
-        <div class="modal__content">
-          <div class="modal__icon">
+        <div class="gameover-content">
+          <div
+            class="gameover-icon"
+            :class="{ 'animate-bounce-subtle': victory, 'animate-pulse-subtle': !victory }"
+          >
             {{ victory ? WIN_EMOJI : LOSE_EMOJI }}
           </div>
 
-          <h1 class="modal__title">
+          <h1 class="gameover-title">
             {{ victory ? VICTORY_MESSAGE : DEFEAT_MESSAGE }}
           </h1>
 
-          <p class="modal__subtitle">
+          <p class="gameover-subtitle">
             {{
               victory
                 ? 'Parabéns! Que tal compartilhar sua vitória?'
@@ -58,17 +64,23 @@ const emit = defineEmits([CLOSE_GAMEOVER])
             }}
           </p>
 
-          <div class="modal__actions">
+          <div class="gameover-actions">
             <button
-              class="btn btn--primary"
+              class="btn-share"
+              :class="victory ? 'btn-share--victory' : 'btn-share--defeat'"
               @click="copyText($event.currentTarget as HTMLButtonElement)"
             >
               Compartilhar Resultado
             </button>
           </div>
-          <div class="modal__countdown-wrapper">
-            <span class="modal__countdown-label">Próxima palavra em</span>
-            <GameCountdown />
+
+          <div class="gameover-divider"></div>
+
+          <div class="countdown-card">
+            <span class="countdown-label">Próxima palavra em</span>
+            <div class="countdown-timer-box">
+              <GameCountdown />
+            </div>
           </div>
         </div>
       </div>
@@ -77,142 +89,202 @@ const emit = defineEmits([CLOSE_GAMEOVER])
 </template>
 
 <style scoped>
-.modal__overlay {
+.gameover-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px);
-
+  background-color: var(--bg-blur);
+  backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
 }
 
-.modal__container {
+.gameover-container {
   background: #ffffff;
-  width: 100%;
-  max-width: 380px;
-  border-radius: 24px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  width: 90%;
+  max-width: 400px;
+  border-radius: 28px;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.3);
   position: relative;
   overflow: hidden;
-  border-top: 8px solid;
-  animation: scaleUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-top: 10px solid;
 }
 
-.modal__container--victory {
-  border-top-color: green;
+.gameover-container--victory {
+  border-top-color: #10b981;
 }
-.modal__container--defeat {
-  border-top-color: red;
+.gameover-container--defeat {
+  border-top-color: #ef4444;
 }
 
-.modal__close-btn {
+.gameover-close-btn {
   position: absolute;
-  top: 12px;
-  right: 16px;
-  background: none;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: #f8fafc;
   border: none;
-  font-size: 28px;
-  color: #94a3b8;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
   cursor: pointer;
-  transition: color 0.2s;
-  line-height: 1;
-}
-
-.modal__close-btn:hover {
-  color: #64748b;
-}
-
-.modal__content {
-  padding: 32px 24px 24px 24px;
-  text-align: center;
-}
-
-.modal__icon {
-  font-size: 48px;
-  margin-bottom: 12px;
-}
-
-.modal__title {
-  font-family: sans-serif;
-  font-size: 24px;
-  font-weight: 800;
-  color: #1e293b;
-  margin: 0 0 8px 0;
-  letter-spacing: -0.5px;
-}
-
-.modal__subtitle {
-  font-family: sans-serif;
-  font-size: 14px;
-  color: #64748b;
-  margin: 0 0 24px 0;
-  line-height: 1.5;
-}
-
-.modal__actions {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.btn {
-  font-family: sans-serif;
-  width: 100%;
-  padding: 12px 24px;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
+  align-items: center;
+  justify-content: center;
   transition: all 0.2s ease;
-  border: none;
+  z-index: 10;
 }
 
-.btn--primary {
-  background-color: #10b981;
-  color: white;
-  box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
+.gameover-close-btn:hover {
+  color: #111827;
+  background: #e5e7eb;
 }
 
-.btn--primary:hover {
-  background-color: #059669;
-  transform: translateY(-1px);
-}
-
-.btn--primary:active {
-  transform: translateY(0);
-}
-
-.btn--secondary {
-  background-color: #f1f5f9;
-  color: #475569;
-}
-
-.btn--secondary:hover {
-  background-color: #e2e8f0;
-  color: #334155;
-}
-
-.modal__countdown-wrapper {
-  margin-top: 24px;
+.gameover-content {
+  padding: 3rem 2rem 2rem 2rem;
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
 }
 
-.modal__countdown-label {
-  font-family: sans-serif;
-  font-size: 12px;
+.gameover-icon {
+  font-size: 4.5rem;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.gameover-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.gameover-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 0 0 2rem 0;
+  line-height: 1.5;
+  max-width: 280px;
+}
+
+.gameover-actions {
+  width: 100%;
+}
+
+.btn-share {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border-radius: 16px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-share--victory {
+  background-color: #10b981;
+  color: #ffffff;
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+}
+.btn-share--victory:hover {
+  background-color: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px -3px rgba(16, 185, 129, 0.4);
+}
+
+.btn-share--defeat {
+  background-color: #ef4444;
+  color: #ffffff;
+  box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.3);
+}
+.btn-share--defeat:hover {
+  background-color: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px -3px rgba(239, 68, 68, 0.4);
+}
+
+.btn-share.btn--success {
+  background-color: var(--color-black) !important;
+  color: var(--color-white) !important;
+  box-shadow: none !important;
+  transform: translateY(0) !important;
+  cursor: default;
+}
+
+.btn-share:active {
+  transform: translateY(0);
+}
+
+.gameover-divider {
+  height: 1px;
+  background: #f1f5f9;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.countdown-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.countdown-label {
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.075em;
   color: #94a3b8;
-  font-weight: 600;
+  font-weight: 700;
+}
+
+.countdown-timer-box {
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  padding: 0.75rem 2rem;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+.animate-bounce-subtle {
+  animation: bounceSubtle 2s infinite ease-in-out;
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 2s infinite ease-in-out;
+}
+
+@keyframes bounceSubtle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulseSubtle {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
 }
 
 .fade-enter-active,
@@ -220,19 +292,18 @@ const emit = defineEmits([CLOSE_GAMEOVER])
   transition: opacity 0.25s ease;
 }
 
+.fade-enter-active .gameover-container,
+.fade-leave-active .gameover-container {
+  transition: transform 0.25s ease-out;
+}
+
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
 }
 
-@keyframes scaleUp {
-  from {
-    transform: scale(0.9) translateY(10px);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1) translateY(0);
-    opacity: 1;
-  }
+.fade-enter-from .gameover-container,
+.fade-leave-to .gameover-container {
+  transform: scale(0.92);
 }
 </style>
