@@ -83,6 +83,8 @@ const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
   font-weight: 600;
   text-decoration: none;
 
+  box-shadow: 0 1px 3px var(--box-shadow-primary);
+
   transition: transform 0.2s ease-in-out;
   user-select: none;
 }
