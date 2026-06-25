@@ -181,7 +181,7 @@ onUnmounted(() => {
 
 .keyboard__button.highlight {
   background: var(--color-selection) !important;
-  color: var(--color-white) !important;
+  color: var(--color-black) !important;
   transition: background-color 0.1 ease;
 }
 </style>
