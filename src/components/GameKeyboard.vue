@@ -19,6 +19,7 @@ function selectChar(char: string) {
   checkGameover()
 
   if (selected.value === char) return
+  if (keyTiles[char]?.disabled) return
 
   keyTiles[selected.value]?.classList.remove('highlight')
   selected.value = char
