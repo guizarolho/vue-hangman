@@ -163,7 +163,7 @@ const emit = defineEmits([CLOSE_HELP])
 
 .luck-badge {
   background: var(--slider-on);
-  border: 1px solid var(--color-success-shadow);
+  border: 1px solid var(--color-success-light);
   border-radius: 14px;
   padding: 0.85rem 1.25rem;
   display: flex;
