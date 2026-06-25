@@ -38,7 +38,7 @@ defineProps<{
   width: 50%;
   height: 100%;
   border-radius: 100px;
-  background: #f8fafc;
+  background: var(--bg-primary);
 }
 
 .slider__spacer {

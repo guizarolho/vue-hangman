@@ -53,8 +53,8 @@ onUnmounted(() => {
 
 .timer {
   font-size: 18px;
-  font-weight: 700;
-  color: #334155;
+  font-weight: 500;
+  color: var(--text-secondary);
   letter-spacing: 0.5px;
 }
 </style>

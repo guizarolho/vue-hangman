@@ -98,8 +98,8 @@ function updateSettings(mode: boolean, value: boolean) {
   max-width: 420px;
   border-radius: 24px;
   box-shadow:
-    0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    0 20px 25px -5px var(--box-shadow-primary),
+    0 10px 10px -5px var(--box-shadow-secondary);
   overflow: hidden;
 }
 
@@ -118,10 +118,10 @@ function updateSettings(mode: boolean, value: boolean) {
 }
 
 .preferences-close-btn {
-  background: #f8fafc;
+  background: var(--bg-primary);
   border: none;
   font-size: 0.9rem;
-  color: #64748b;
+  color: var(--text-secondary);
   cursor: pointer;
   width: 32px;
   height: 32px;
@@ -134,7 +134,7 @@ function updateSettings(mode: boolean, value: boolean) {
 
 .preferences-close-btn:hover {
   color: var(--text-primary);
-  background: #e5e7eb;
+  background: var(--bg-hover);
 }
 
 .preferences-content {
@@ -150,8 +150,8 @@ function updateSettings(mode: boolean, value: boolean) {
   align-items: center;
   justify-content: space-between;
   padding: 0.85rem 1.15rem;
-  background: #f8fafc;
-  border: 1px solid #f1f5f9;
+  background: var(--bg-secondary);
+  border: 1px solid var(--bg-outline);
   border-radius: 16px;
   cursor: pointer;
   text-align: left;
@@ -159,13 +159,13 @@ function updateSettings(mode: boolean, value: boolean) {
 }
 
 .preferences-option:hover {
-  color: #111827;
-  background: #e5e7eb;
+  color: var(--text-primary);
+  background: var(--bg-hover);
   transform: translateY(-1px);
 }
 
 .preferences-option:active {
-  background-color: #e5e7eb;
+  background-color: var(--bg-hover);
   transform: translateY(1px);
 }
 

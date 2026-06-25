@@ -100,6 +100,7 @@ provide(GAME_SETTINGS, settingsManager)
   align-items: center;
   flex-direction: column;
 
+  background-color: var(--bg-primary);
   width: 100%;
   margin-top: 30px;
   margin-bottom: 30px;

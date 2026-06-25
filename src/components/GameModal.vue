@@ -108,24 +108,24 @@ function copyText(button: HTMLButtonElement) {
   width: 90%;
   max-width: 400px;
   border-radius: 28px;
-  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.3);
+  box-shadow: 0 25px 50px -12px var(--box-shadow-primary);
   position: relative;
   overflow: hidden;
   border-top: 10px solid;
 }
 
 .gameover-container--victory {
-  border-top-color: #10b981;
+  border-top-color: var(--color-success-light);
 }
 .gameover-container--defeat {
-  border-top-color: #ef4444;
+  border-top-color: var(--color-error-light);
 }
 
 .gameover-close-btn {
   position: absolute;
   top: 1.25rem;
   right: 1.25rem;
-  background: #f8fafc;
+  background: var(--bg-primary);
   border: none;
   font-size: 0.85rem;
   color: var(--text-secondary);
@@ -141,8 +141,8 @@ function copyText(button: HTMLButtonElement) {
 }
 
 .gameover-close-btn:hover {
-  color: #111827;
-  background: #e5e7eb;
+  color: var(--text-primary);
+  background: var(--bg-hover);
 }
 
 .gameover-content {
@@ -197,23 +197,23 @@ function copyText(button: HTMLButtonElement) {
 .btn-share--victory {
   background-color: var(--color-success);
   color: var(--color-white);
-  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 10px 15px -3px var(--color-success-shadow);
 }
 .btn-share--victory:hover {
   background-color: var(--color-success-light);
   transform: translateY(-2px);
-  box-shadow: 0 12px 20px -3px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 12px 20px -3px var(--color-success-shadow);
 }
 
 .btn-share--defeat {
   background-color: var(--color-error);
   color: var(--color-white);
-  box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.3);
+  box-shadow: 0 10px 15px -3px var(--color-error-shadow);
 }
 .btn-share--defeat:hover {
   background-color: var(--color-error-light);
   transform: translateY(-2px);
-  box-shadow: 0 12px 20px -3px rgba(239, 68, 68, 0.4);
+  box-shadow: 0 12px 20px -3px var(--color-error-shadow);
 }
 
 .btn-share.btn--success {
@@ -230,7 +230,7 @@ function copyText(button: HTMLButtonElement) {
 
 .gameover-divider {
   height: 1px;
-  background: #f1f5f9;
+  background: var(--bg-outline);
   width: 100%;
   margin: 2rem 0;
 }
@@ -247,13 +247,13 @@ function copyText(button: HTMLButtonElement) {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.075em;
-  color: #94a3b8;
+  color: var(--text-secondary);
   font-weight: 700;
 }
 
 .countdown-timer-box {
-  background: #f8fafc;
-  border: 1px solid #f1f5f9;
+  background: var(--bg-primary);
+  border: 1px solid var(--bg-outline);
   padding: 0.75rem 2rem;
   border-radius: 12px;
   font-weight: 700;

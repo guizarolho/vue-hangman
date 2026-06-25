@@ -7,7 +7,7 @@
     <main class="main__container">
       <div class="bio__card">
         <div class="image__container">
-          <img src="" alt="Guilherme Mendes Fontes" />
+          <img src="../assets/biopic.jpg" alt="Guilherme Mendes Fontes" />
         </div>
 
         <div class="title__container">
@@ -47,10 +47,10 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  width: 100%;
-  height: 100%;
   margin: 0;
   padding: 0;
+  height: 100%;
+  width: 100%;
 
   font-family:
     'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -58,9 +58,10 @@
 
 .bio__wrapper {
   min-height: 100vh;
-  background-color: #f8fafc;
+  min-width: 100vw;
+  background-color: var(--bg-secondary);
   font-family: sans-serif;
-  color: #334155;
+  color: var(--text-primary);
   display: flex;
   flex-direction: column;
 }
@@ -79,24 +80,22 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #64748b;
+  color: var(--text-secondary);
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;
   transition: color 0.2s ease;
+  width: auto;
 }
 
 .bio__back-link:hover {
-  color: #0f172a;
+  color: var(--text-primary);
 }
 
 .bio__back-link .arrow {
-  font-size: 16px;
-  transition: transform 0.2s ease;
-}
-
-.bio__back-link:hover .arrow {
-  transform: translateX(-4px);
+  width: auto;
+  height: auto;
+  display: inline-block;
 }
 
 .main__container {
@@ -114,8 +113,8 @@
   padding: 40px 32px;
   border-radius: 24px;
   box-shadow:
-    0 10px 25px -5px rgba(0, 0, 0, 0.05),
-    0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    0 10px 25px -5px var(--box-shadow-primary),
+    0 8px 10px -6px var(--box-shadow-secondary);
   text-align: center;
 }
 
@@ -125,8 +124,8 @@
   margin: 0 auto 20px auto;
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background-color: #e2e8f0;
+  box-shadow: 0 4px 12px var(--box-shadow-primary);
+  background-color: var(--bg-secondary);
 }
 
 .image__container img {
@@ -146,12 +145,12 @@
 .content__container .content {
   font-size: 16px;
   line-height: 1.6;
-  color: #475569;
+  color: var(--text-primary);
   margin: 0;
 }
 
 .content__container .content strong {
-  color: #10b981;
+  color: var(--color-success-light);
 }
 
 .content__container .content span {
@@ -161,12 +160,12 @@
 
 .divider {
   border: none;
-  border-top: 1px solid #f1f5f9;
+  border-top: 1px solid var(--bg-outline);
   margin: 28px 0;
 }
 
 .disclaimer__container {
-  background-color: #f8fafc;
+  background-color: var(--bg-primary);
   padding: 16px;
   border-radius: 12px;
   margin-bottom: 28px;
@@ -189,7 +188,7 @@
 
 .footer__container .copyright {
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--text-secondary);
   line-height: 1.5;
 }
 </style>

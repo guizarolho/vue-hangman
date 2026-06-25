@@ -67,8 +67,8 @@ const emit = defineEmits([CLOSE_HELP])
   max-width: 420px;
   border-radius: 24px;
   box-shadow:
-    0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    0 20px 25px -5px var(--box-shadow-primary),
+    0 10px 10px -5px var(--box-shadow-secondary);
   overflow: hidden;
 }
 
@@ -87,10 +87,10 @@ const emit = defineEmits([CLOSE_HELP])
 }
 
 .help-close-btn {
-  background: #f8fafc;
+  background: var(--bg-primary);
   border: none;
   font-size: 0.9rem;
-  color: #64748b;
+  color: var(--text-secondary);
   cursor: pointer;
   width: 32px;
   height: 32px;
@@ -102,8 +102,8 @@ const emit = defineEmits([CLOSE_HELP])
 }
 
 .help-close-btn:hover {
-  color: #111827;
-  background: #e5e7eb;
+  color: var(--text-primary);
+  background: var(--bg-hover);
 }
 
 .help-content {
@@ -114,8 +114,8 @@ const emit = defineEmits([CLOSE_HELP])
 }
 
 .help-card {
-  background: #f8fafc;
-  border: 1px solid #f1f5f9;
+  background: var(--bg-primary);
+  border: 1px solid var(--bg-outline);
   border-radius: 18px;
   padding: 1.25rem;
   display: flex;
@@ -146,7 +146,7 @@ const emit = defineEmits([CLOSE_HELP])
   margin: 0;
   font-size: 1.05rem;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--text-primary);
 }
 
 .help-text {
@@ -162,8 +162,8 @@ const emit = defineEmits([CLOSE_HELP])
 }
 
 .luck-badge {
-  background: #f0fdf4;
-  border: 1px solid #dcfce7;
+  background: var(--slider-on);
+  border: 1px solid var(--color-success-shadow);
   border-radius: 14px;
   padding: 0.85rem 1.25rem;
   display: flex;
@@ -187,7 +187,7 @@ const emit = defineEmits([CLOSE_HELP])
 .luck-text {
   font-size: 0.88rem;
   font-weight: 600;
-  color: #166534;
+  color: var(--color-success);
 }
 
 .fade-enter-active,

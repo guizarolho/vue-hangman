@@ -26,9 +26,9 @@ const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
 <style scoped>
 .header__container {
   width: 100%;
-  background: var(--color-white);
+  background: var(--bg-primary);
   border-bottom: 1px solid var(--bg-outline);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 3px var(--box-shadow-primary);
 }
 
 .header__content {
@@ -89,7 +89,7 @@ const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
 
 .header__button:hover {
   color: var(--text-primary);
-  background: var(--bg-primary);
+  background: var(--bg-hover);
   transform: translateY(-1px);
 }
 

@@ -133,7 +133,7 @@ onUnmounted(() => {
   border-radius: 4px;
 
   background: var(--keyboard);
-  color: white;
+  color: var(--color-white);
 
   font-size: 1rem;
   font-weight: 700;
@@ -181,7 +181,7 @@ onUnmounted(() => {
 
 .keyboard__button.highlight {
   background: var(--color-selection) !important;
-  color: black !important;
+  color: var(--color-white) !important;
   transition: background-color 0.1 ease;
 }
 </style>
