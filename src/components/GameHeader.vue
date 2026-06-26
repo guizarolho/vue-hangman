@@ -18,7 +18,10 @@ const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
       </div>
 
       <div class="header__group header__group--right">
-        <RouterLink to="/about" class="header__button">{{ INFO_CHAR }}</RouterLink>
+        <RouterLink to="/about" class="header__button header__button--about">
+          <span class="desktop">Sobre</span>
+          <span class="mobile">{{ INFO_CHAR }}</span>
+        </RouterLink>
       </div>
     </div>
   </header>
@@ -108,6 +111,14 @@ const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
   transform: translateY(0) scale(0.98);
 }
 
+.desktop {
+  display: inline;
+}
+
+.mobile {
+  display: none;
+}
+
 @media (max-width: 540px) {
   .header__content {
     flex-direction: column;
@@ -122,12 +133,39 @@ const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
   }
 
   .header__group {
-    width: 100%;
+    width: auto;
+    flex: none;
     justify-content: center;
   }
 
-  .header__group--right {
+  .header__content {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .desktop {
     display: none;
+  }
+
+  .mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  .header__button--about {
+    padding: 0;
+    width: 2.125rem;
+    height: 2.125rem;
+    aspect-ratio: 1/ 1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
   }
 }
 </style>

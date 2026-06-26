@@ -1,6 +1,6 @@
 import type { GamePrefs } from './GamePrefs'
 import { computed, reactive } from 'vue'
-import { GAME_SETTINGS } from '@/utils/consts'
+import { DARK_MODE, GAME_SETTINGS, HIGHCONTRAST_MODE } from '@/utils/consts'
 
 export class GameSettingsManager {
   public DarkMode
@@ -24,10 +24,10 @@ export class GameSettingsManager {
   setMode(isDarkMode: boolean, value: boolean) {
     if (isDarkMode) {
       this.gamePrefs.darkMode = value
-      this.root.classList.toggle('dark', value)
+      this.root.classList.toggle(DARK_MODE, value)
     } else {
       this.gamePrefs.highContrastMode = value
-      this.root.classList.toggle('high-contrast', value)
+      this.root.classList.toggle(HIGHCONTRAST_MODE, value)
     }
 
     this.saveSettings()
@@ -45,7 +45,7 @@ export class GameSettingsManager {
     this.gamePrefs.darkMode = prefs.darkMode
     this.gamePrefs.highContrastMode = prefs.highContrastMode
 
-    this.root.classList.toggle('dark', prefs.darkMode)
-    this.root.classList.toggle('high-contrast', prefs.highContrastMode)
+    this.root.classList.toggle(DARK_MODE, prefs.darkMode)
+    this.root.classList.toggle(HIGHCONTRAST_MODE, prefs.highContrastMode)
   }
 }
