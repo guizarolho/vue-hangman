@@ -28,8 +28,8 @@ defineProps<{
   justify-content: center;
   align-items: center;
 
-  height: 80%;
-  width: 80%;
+  height: 100%;
+  width: 100%;
   border-radius: 20px;
 
   background: var(--color-black);

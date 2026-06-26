@@ -105,6 +105,7 @@ function copyText(button: HTMLButtonElement) {
 
 .gameover-container {
   background: var(--color-white);
+  border: 1px solid var(--bg-outline);
   width: 90%;
   max-width: 400px;
   border-radius: 28px;

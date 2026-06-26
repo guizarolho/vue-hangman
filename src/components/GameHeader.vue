@@ -33,6 +33,7 @@ const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
 
 .header__content {
   max-width: 1200px;
+  min-height: 5rem;
   margin: 0 auto;
   padding: 0.75rem 2rem;
 

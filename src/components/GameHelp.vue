@@ -63,6 +63,7 @@ const emit = defineEmits([CLOSE_HELP])
 
 .help-container {
   background: var(--color-white);
+  border: 1px solid var(--bg-outline);
   width: 90%;
   max-width: 420px;
   border-radius: 24px;
@@ -187,7 +188,7 @@ const emit = defineEmits([CLOSE_HELP])
 .luck-text {
   font-size: 0.88rem;
   font-weight: 600;
-  color: var(--color-success);
+  color: var(--text-luck);
 }
 
 .fade-enter-active,

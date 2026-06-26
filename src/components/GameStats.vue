@@ -73,6 +73,7 @@ const gameStats = gameManager.getStats()
 
 .stats-container {
   background: var(--color-white);
+  border: 1px solid var(--bg-outline);
   width: 90%;
   max-width: 420px;
   border-radius: 24px;

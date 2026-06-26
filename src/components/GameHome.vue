@@ -50,13 +50,13 @@ provide(GAME_SETTINGS, settingsManager)
 </script>
 
 <template>
-  <GameHeader
-    @open-pref="showPreferences = true"
-    @open-help="showHelp = true"
-    @open-stats="showStats = true"
-  />
-  <GameToast :show="showWarning" :text="secretWord" />
   <div class="game__container">
+    <GameHeader
+      @open-pref="showPreferences = true"
+      @open-help="showHelp = true"
+      @open-stats="showStats = true"
+    />
+    <GameToast :show="showWarning" :text="secretWord" />
     <div class="word__container">
       <GameTile
         v-for="(char, index) in [...(secretWord ?? '')]"
@@ -80,17 +80,6 @@ provide(GAME_SETTINGS, settingsManager)
 </template>
 
 <style scoped>
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-
-  font-family:
-    'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
 .game__container {
   display: flex;
   flex-direction: row;
@@ -98,11 +87,10 @@ provide(GAME_SETTINGS, settingsManager)
   align-items: center;
   flex-direction: column;
 
-  padding-top: 5rem;
-
   background-color: var(--color-white);
   width: 100%;
-  min-height: 91.5vh;
+  height: 100%;
+  min-height: 100vh;
 }
 
 .word__container {
@@ -110,6 +98,8 @@ provide(GAME_SETTINGS, settingsManager)
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
+  padding-top: 5rem;
   gap: 12px;
   width: 100%;
   max-width: 500px;

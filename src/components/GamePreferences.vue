@@ -94,6 +94,7 @@ function updateSettings(mode: boolean, value: boolean) {
 
 .preferences-container {
   background: var(--color-white);
+  border: 1px solid var(--bg-outline);
   width: 90%;
   max-width: 420px;
   border-radius: 24px;
@@ -187,7 +188,7 @@ function updateSettings(mode: boolean, value: boolean) {
 }
 
 .option-text {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--text-primary);
 }

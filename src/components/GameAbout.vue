@@ -43,17 +43,6 @@
 </template>
 
 <style scoped>
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-
-  font-family:
-    'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
 .bio__wrapper {
   min-height: 100vh;
   min-width: 100vw;
@@ -106,6 +95,7 @@
 
 .bio__card {
   background: var(--color-white);
+  border: 1px solid var(--bg-outline);
   width: 100%;
   max-width: 440px;
   padding: 40px 32px;
@@ -164,6 +154,7 @@
 
 .disclaimer__container {
   background-color: var(--bg-primary);
+  border: 1px solid var(--bg-outline);
   padding: 16px;
   border-radius: 12px;
   margin-bottom: 28px;

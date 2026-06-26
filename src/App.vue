@@ -3,6 +3,17 @@
 </template>
 
 <style>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  font-family:
+    'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 :root {
   --color-success: green;
   --color-success-light: #10b981;
@@ -29,6 +40,7 @@
 
   --text-primary: #111827;
   --text-secondary: #6b7280;
+  --text-luck: #065f46;
 
   --box-shadow-primary: rgba(0, 0, 0, 0.1);
   --box-shadow-secondary: rgba(0, 0, 0, 0.04);
@@ -63,6 +75,7 @@
 
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
+  --text-luck: #10b981;
 
   --box-shadow-primary: rgba(0, 0, 0, 0.3);
   --box-shadow-secondary: rgba(0, 0, 0, 0.15);
@@ -97,6 +110,7 @@
 
   --text-primary: #ffffff;
   --text-secondary: #ffffff;
+  --text-luck: #065f46;
 
   --box-shadow-primary: none;
   --box-shadow-secondary: none;
@@ -131,11 +145,12 @@
 
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
+  --text-luck: #065f46;
 
   --box-shadow-primary: rgba(0, 0, 0, 0.3);
   --box-shadow-secondary: rgba(0, 0, 0, 0.15);
 
-  --slider-on: #065f46;
-  --slider-off: #7f1d1d;
+  --slider-on: #00ff00;
+  --slider-off: #ff0000;
 }
 </style>
