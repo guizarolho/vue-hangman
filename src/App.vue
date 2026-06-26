@@ -102,7 +102,7 @@
   --box-shadow-secondary: none;
 
   --slider-on: #ffffff;
-  --slider-off: #000000;
+  --slider-off: #ffffff;
 }
 
 .dark.high-contrast {
