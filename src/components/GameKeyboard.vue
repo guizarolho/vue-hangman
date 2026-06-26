@@ -117,17 +117,23 @@ onUnmounted(() => {
   flex-direction: column;
   gap: 0.5rem;
   align-items: center;
-  width: 100vw;
+  width: 100%;
+  max-width: 31.25;
+  margin: 1rem auto 0 auto;
+  padding: 0 0.5rem;
   margin-top: 1rem;
 }
 
 .keyboard__row {
   display: flex;
   gap: 0.375rem;
+  width: 100%;
+  justify-content: center;
 }
 
 .keyboard__row > button {
-  width: 2.75rem;
+  flex: 1;
+  max-width: 2.75rem;
   height: 3.625rem;
 
   border: none;
@@ -146,8 +152,14 @@ onUnmounted(() => {
     transform 0.1s ease;
 }
 
+.keyboard__row > button.keyboard__enter,
+.keyboard__row > button.keyboard__clear {
+  flex: 1.5;
+  max-width: 3.5rem;
+}
+
 .keyboard__row > button.keyboard__enter {
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   background-color: var(--color-black);
 }
 
