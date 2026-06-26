@@ -27,8 +27,7 @@
         <div class="disclaimer__container">
           <h3 class="disclaimer__title">Termos de Privacidade</h3>
           <p class="disclaimer">
-            O Hang é totalmente focado em privacidade: não utiliza cookies e não faz nenhum tipo de
-            tracking de dados.
+            O Hang não utiliza cookies e não faz nenhum tipo de tracking de dados.
           </p>
         </div>
 
@@ -109,7 +108,7 @@
 .image__container {
   width: 6rem;
   height: 6rem;
-  margin: 0 auto 1.25rem auto;
+  margin: 0 auto 1rem auto;
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 0 0.25rem 0.75rem var(--box-shadow-primary);
@@ -149,15 +148,15 @@
 .divider {
   border: none;
   border-top: 1px solid var(--bg-outline);
-  margin: 1.75rem 0;
+  margin: 1rem 0;
 }
 
 .disclaimer__container {
   background-color: var(--bg-primary);
   border: 1px solid var(--bg-outline);
-  padding: 1.75rem;
+  padding: 1rem;
   border-radius: 0.75rem;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1rem;
 }
 
 .disclaimer__title {
