@@ -6,13 +6,15 @@ export class GameSettingsManager {
   public DarkMode
   public ContrastMode
   private gamePrefs: GamePrefs
+  private root: HTMLElement
 
-  constructor() {
+  constructor(element: HTMLElement) {
     this.gamePrefs = reactive({
       darkMode: false,
       highContrastMode: false,
     })
 
+    this.root = element
     this.DarkMode = computed(() => this.gamePrefs.darkMode)
     this.ContrastMode = computed(() => this.gamePrefs.highContrastMode)
 
@@ -22,8 +24,10 @@ export class GameSettingsManager {
   setMode(isDarkMode: boolean, value: boolean) {
     if (isDarkMode) {
       this.gamePrefs.darkMode = value
+      this.root.classList.toggle('dark', value)
     } else {
       this.gamePrefs.highContrastMode = value
+      this.root.classList.toggle('high-contrast', value)
     }
 
     this.saveSettings()

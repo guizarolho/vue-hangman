@@ -17,7 +17,7 @@ import GameToast from './GameToast.vue'
 // const secretWord = 'FAKER'
 const secretWord = getDailyWord()
 const gameManager = new GameManager(secretWord ?? '')
-const settingsManager = new GameSettingsManager()
+const settingsManager = new GameSettingsManager(document.documentElement)
 
 const showGameover = ref(false)
 const showPreferences = ref(false)
@@ -100,9 +100,11 @@ provide(GAME_SETTINGS, settingsManager)
   align-items: center;
   flex-direction: column;
 
+  background-color: var(--color-white);
   width: 100%;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  height: 100%;
+  padding-top: 30px;
+  padding-bottom: 60px;
 }
 
 .word__container {

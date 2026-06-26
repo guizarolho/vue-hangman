@@ -59,7 +59,7 @@
 .bio__wrapper {
   min-height: 100vh;
   min-width: 100vw;
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-primary);
   font-family: sans-serif;
   color: var(--text-primary);
   display: flex;

@@ -28,6 +28,10 @@ const gameManager = inject<GameManager>(GAME_MANAGER)
   margin: 20px;
 }
 
+.attempts__container span {
+  color: var(--color-black);
+}
+
 .attempts__container {
   display: flex;
   flex-direction: row;
