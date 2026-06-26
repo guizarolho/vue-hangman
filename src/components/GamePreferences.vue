@@ -1,5 +1,12 @@
 <script setup lang="ts">
-import { CHAT_EMOJI, ECLIPSE_EMOJI, GAME_SETTINGS, SUN_EMOJI, SUPPORT_EMAIL } from '@/utils/consts'
+import {
+  CHAT_EMOJI,
+  CLOSE_CHAR,
+  ECLIPSE_EMOJI,
+  GAME_SETTINGS,
+  SUN_EMOJI,
+  SUPPORT_EMAIL,
+} from '@/utils/consts'
 import { CLOSE_PREFERENCES } from '@/utils/emits.ts'
 import { inject } from 'vue'
 import GameSlider from './GameSlider.vue'
@@ -33,7 +40,9 @@ function updateSettings(mode: boolean, value: boolean) {
       <div class="preferences-container">
         <header class="preferences-header">
           <h2 class="preferences-title">Preferências</h2>
-          <button class="preferences-close-btn" @click="emit(CLOSE_PREFERENCES)">✕</button>
+          <button class="preferences-close-btn" @click="emit(CLOSE_PREFERENCES)">
+            {{ CLOSE_CHAR }}
+          </button>
         </header>
 
         <div class="preferences-content">
@@ -151,7 +160,7 @@ function updateSettings(mode: boolean, value: boolean) {
   align-items: center;
   justify-content: space-between;
   padding: 0.85rem 1.15rem;
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
   border: 1px solid var(--bg-outline);
   border-radius: 1rem;
   cursor: pointer;
@@ -185,6 +194,11 @@ function updateSettings(mode: boolean, value: boolean) {
   justify-content: center;
   font-size: 1.15rem;
   flex-shrink: 0;
+}
+
+.option-icon-wrapper.contrast-icon {
+  color: var(--color-black);
+  font-size: 1.875rem;
 }
 
 .option-text {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { GameManager } from '@/game/GameManager'
-import { FIRE_EMOJI, GAME_MANAGER, TROPHY_EMOJI } from '@/utils/consts'
+import { CLOSE_CHAR, FIRE_EMOJI, GAME_MANAGER, TROPHY_EMOJI } from '@/utils/consts'
 import { CLOSE_STATS } from '@/utils/emits'
 import { inject } from 'vue'
 
@@ -19,7 +19,7 @@ const gameStats = gameManager.getStats()
       <div class="stats-container">
         <div class="stats-header">
           <h2 class="stats-title">Estatísticas</h2>
-          <button class="stats-close-btn" @click="emit(CLOSE_STATS)">✕</button>
+          <button class="stats-close-btn" @click="emit(CLOSE_STATS)">{{ CLOSE_CHAR }}</button>
         </div>
 
         <div class="stats-content">

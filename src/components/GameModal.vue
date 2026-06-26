@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {
+  CLOSE_CHAR,
   DEFEAT_MESSAGE,
   GAME_MANAGER,
   LOSE_EMOJI,
@@ -42,7 +43,7 @@ function copyText(button: HTMLButtonElement) {
         class="gameover-container"
         :class="{ 'gameover-container--victory': victory, 'gameover-container--defeat': !victory }"
       >
-        <button class="gameover-close-btn" @click="emit(CLOSE_GAMEOVER)">✕</button>
+        <button class="gameover-close-btn" @click="emit(CLOSE_GAMEOVER)">{{ CLOSE_CHAR }}</button>
 
         <div class="gameover-content">
           <div

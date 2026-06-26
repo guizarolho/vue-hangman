@@ -25,7 +25,7 @@ const gameManager = inject<GameManager>(GAME_MANAGER)
   align-items: center;
   width: 100%;
 
-  margin: 1.25rem;
+  margin: 1rem;
 }
 
 .attempts__container span {

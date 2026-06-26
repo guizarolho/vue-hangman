@@ -1,7 +1,7 @@
 <template>
   <div class="bio__wrapper">
     <nav class="bio__nav">
-      <RouterLink to="/" class="bio__back-link"> <span class="arrow">←</span>Voltar </RouterLink>
+      <RouterLink to="/" class="bio__back-link"> <span class="arrow">←</span>Voltar</RouterLink>
     </nav>
 
     <main class="main__container">
@@ -44,8 +44,8 @@
 
 <style scoped>
 .bio__wrapper {
-  min-height: 100vh;
-  min-width: 100vw;
+  min-height: 100%;
+  min-width: 100%;
   background-color: var(--bg-primary);
   font-family: sans-serif;
   color: var(--text-primary);

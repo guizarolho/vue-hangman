@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { INFO_CHAR } from '@/utils/consts'
 import { OPEN_HELP, OPEN_PREFERENCES, OPEN_STATS } from '@/utils/emits'
 const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
 </script>
@@ -17,7 +18,7 @@ const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
       </div>
 
       <div class="header__group header__group--right">
-        <RouterLink to="/about" class="header__button">Sobre</RouterLink>
+        <RouterLink to="/about" class="header__button">{{ INFO_CHAR }}</RouterLink>
       </div>
     </div>
   </header>
@@ -25,7 +26,7 @@ const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
 
 <style scoped>
 .header__container {
-  width: 100vw;
+  width: 100%;
   background: var(--bg-primary);
   border-bottom: 1px solid var(--bg-outline);
   box-shadow: 0 1px 0.25rem var(--box-shadow-primary);
@@ -35,18 +36,20 @@ const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
   max-width: 75rem;
   min-height: 5rem;
   margin: 0 auto;
-  padding: 0.75rem 2rem;
+  padding: 0.75rem 1rem;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.5rem;
 }
 
 .header__group {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
   flex: 1;
+  min-width: 0;
 }
 
 .header__group--left {
@@ -61,6 +64,7 @@ const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .header__title {
@@ -74,7 +78,7 @@ const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
 
 .header__button {
   cursor: pointer;
-  padding: 0.5rem 1.25rem;
+  padding: 0.5rem max(0.5rem, 1.25vw);
   border-radius: 0.5rem;
 
   background: var(--bg-secondary);
@@ -83,10 +87,14 @@ const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
   font-size: 0.9rem;
   font-weight: 600;
   text-decoration: none;
+  white-space: nowrap;
 
   box-shadow: 0 1px 0.25rem var(--box-shadow-primary);
 
-  transition: transform 0.2s ease-in-out;
+  transition:
+    transform 0.2s ease-in-out,
+    background 0.2s,
+    color 0.2s;
   user-select: none;
 }
 
@@ -98,5 +106,28 @@ const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
 
 .header__button:active {
   transform: translateY(0) scale(0.98);
+}
+
+@media (max-width: 540px) {
+  .header__content {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    min-height: auto;
+  }
+
+  .header__center {
+    order: -1;
+    width: 100%;
+  }
+
+  .header__group {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .header__group--right {
+    display: none;
+  }
 }
 </style>

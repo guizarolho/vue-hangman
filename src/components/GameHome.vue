@@ -83,7 +83,7 @@ provide(GAME_SETTINGS, settingsManager)
 .game__container {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
 
@@ -101,9 +101,9 @@ provide(GAME_SETTINGS, settingsManager)
   justify-content: center;
   align-items: center;
 
-  padding-top: 5rem;
+  padding: 3rem 1rem 0;
   gap: 0.75rem;
-  width: 100vw;
+  width: 100%;
   max-width: 31.25rem;
 }
 </style>

@@ -119,9 +119,8 @@ onUnmounted(() => {
   align-items: center;
   width: 100%;
   max-width: 31.25;
-  margin: 1rem auto 0 auto;
-  padding: 0 0.5rem;
-  margin-top: 1rem;
+  margin: 1rem auto 1.5rem auto;
+  padding: 0 1rem;
 }
 
 .keyboard__row {

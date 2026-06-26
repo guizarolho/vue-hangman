@@ -19,8 +19,9 @@ const props = defineProps<{
 
 <style scoped>
 .game-tile {
-  width: 100%;
-  height: 100%;
+  flex: 1;
+  max-width: 6.25rem;
+  aspect-ratio: 1 / 1;
 
   display: flex;
   justify-content: center;
@@ -31,9 +32,8 @@ const props = defineProps<{
 
 .game-tile__card {
   position: relative;
-
-  width: 6.25rem;
-  height: 6.25rem;
+  width: 100%;
+  height: 100%;
 
   transform-style: preserve-3d;
   transition: transform 0.8s ease-in-out;

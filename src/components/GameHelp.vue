@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CLOVER_EMOJI, LAMP_EMOJI } from '@/utils/consts'
+import { CLOSE_CHAR, CLOVER_EMOJI, LAMP_EMOJI } from '@/utils/consts'
 import { CLOSE_HELP } from '@/utils/emits'
 
 defineProps<{
@@ -14,7 +14,7 @@ const emit = defineEmits([CLOSE_HELP])
       <div class="help-container">
         <header class="help-header">
           <h2 class="help-title">Ajuda</h2>
-          <button class="help-close-btn" @click="emit(CLOSE_HELP)">✕</button>
+          <button class="help-close-btn" @click="emit(CLOSE_HELP)">{{ CLOSE_CHAR }}</button>
         </header>
 
         <div class="help-content">

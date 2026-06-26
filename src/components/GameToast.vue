@@ -18,7 +18,7 @@ defineProps<{
 <style scoped>
 .warning-container {
   position: fixed;
-  top: 4.6rem;
+  top: 6rem;
   left: 50%;
   transform: translateX(-50%);
 
