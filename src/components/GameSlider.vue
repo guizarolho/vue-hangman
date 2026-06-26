@@ -35,8 +35,8 @@ defineProps<{
 }
 
 .slider__marker {
-  width: 80%;
-  height: 80%;
+  width: 50%;
+  height: 100%;
   border-radius: 100px;
   background: var(--bg-primary);
 }
