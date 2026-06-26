@@ -25,14 +25,14 @@ const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
 
 <style scoped>
 .header__container {
-  width: 100%;
+  width: 100vw;
   background: var(--bg-primary);
   border-bottom: 1px solid var(--bg-outline);
-  box-shadow: 0 1px 3px var(--box-shadow-primary);
+  box-shadow: 0 1px 0.25rem var(--box-shadow-primary);
 }
 
 .header__content {
-  max-width: 1200px;
+  max-width: 75rem;
   min-height: 5rem;
   margin: 0 auto;
   padding: 0.75rem 2rem;
@@ -75,7 +75,7 @@ const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
 .header__button {
   cursor: pointer;
   padding: 0.5rem 1.25rem;
-  border-radius: 8px;
+  border-radius: 0.5rem;
 
   background: var(--bg-secondary);
   color: var(--text-secondary);
@@ -84,7 +84,7 @@ const emit = defineEmits([OPEN_PREFERENCES, OPEN_HELP, OPEN_STATS])
   font-weight: 600;
   text-decoration: none;
 
-  box-shadow: 0 1px 3px var(--box-shadow-primary);
+  box-shadow: 0 1px 0.25rem var(--box-shadow-primary);
 
   transition: transform 0.2s ease-in-out;
   user-select: none;

@@ -16,9 +16,9 @@ defineProps<{
   justify-content: center;
   align-items: center;
 
-  height: 20px;
-  width: 20px;
-  border-radius: 20px;
+  height: 1.25rem;
+  width: 1.25rem;
+  border-radius: 1.25rem;
 
   background: var(--color-black);
 }
@@ -30,7 +30,7 @@ defineProps<{
 
   height: 100%;
   width: 100%;
-  border-radius: 20px;
+  border-radius: 1.25rem;
 
   background: var(--color-black);
   transition: background 0.3s ease-in-out;

@@ -115,23 +115,23 @@ onUnmounted(() => {
 .keyboard__container {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   margin-top: 1rem;
 }
 
 .keyboard__row {
   display: flex;
-  gap: 6px;
+  gap: 0.375rem;
 }
 
 .keyboard__row > button {
-  width: 44px;
-  height: 58px;
+  width: 2.75rem;
+  height: 3.625rem;
 
   border: none;
-  border-radius: 4px;
+  border-radius: 0.25rem;
 
   background: var(--keyboard);
   color: var(--color-white);

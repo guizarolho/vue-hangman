@@ -47,12 +47,12 @@ onUnmounted(() => {
   display: inline-flex;
   background-color: var(--bg-primary);
   border: 1px solid var(--bg-outline);
-  padding: 6px 16px;
-  border-radius: 20px;
+  padding: 0.375rem 1rem;
+  border-radius: 1.25rem;
 }
 
 .timer {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 500;
   color: var(--text-secondary);
   letter-spacing: 0.5px;

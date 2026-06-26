@@ -88,9 +88,11 @@ provide(GAME_SETTINGS, settingsManager)
   flex-direction: column;
 
   background-color: var(--color-white);
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+
   min-height: 100vh;
+  min-width: 100vw;
 }
 
 .word__container {
@@ -100,8 +102,8 @@ provide(GAME_SETTINGS, settingsManager)
   align-items: center;
 
   padding-top: 5rem;
-  gap: 12px;
-  width: 100%;
-  max-width: 500px;
+  gap: 0.75rem;
+  width: 100vw;
+  max-width: 31.25rem;
 }
 </style>

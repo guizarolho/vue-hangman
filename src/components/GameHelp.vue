@@ -54,7 +54,7 @@ const emit = defineEmits([CLOSE_HELP])
   width: 100vw;
   height: 100vh;
   background-color: var(--bg-blur);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(0.5rem);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,12 +64,12 @@ const emit = defineEmits([CLOSE_HELP])
 .help-container {
   background: var(--color-white);
   border: 1px solid var(--bg-outline);
-  width: 90%;
-  max-width: 420px;
-  border-radius: 24px;
+  width: 90vw;
+  max-width: 26.25rem;
+  border-radius: 1.5rem;
   box-shadow:
-    0 20px 25px -5px var(--box-shadow-primary),
-    0 10px 10px -5px var(--box-shadow-secondary);
+    0 1.25rem 1.625rem -0.25rem var(--box-shadow-primary),
+    0 0.625rem 0.625rem -0.25rem var(--box-shadow-secondary);
   overflow: hidden;
 }
 
@@ -93,8 +93,8 @@ const emit = defineEmits([CLOSE_HELP])
   font-size: 0.9rem;
   color: var(--text-secondary);
   cursor: pointer;
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -117,7 +117,7 @@ const emit = defineEmits([CLOSE_HELP])
 .help-card {
   background: var(--bg-primary);
   border: 1px solid var(--bg-outline);
-  border-radius: 18px;
+  border-radius: 1.25rem;
   padding: 1.25rem;
   display: flex;
   gap: 1rem;
@@ -125,8 +125,8 @@ const emit = defineEmits([CLOSE_HELP])
 }
 
 .help-icon-wrapper {
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -165,7 +165,7 @@ const emit = defineEmits([CLOSE_HELP])
 .luck-badge {
   background: var(--slider-on);
   border: 1px solid var(--color-success-light);
-  border-radius: 14px;
+  border-radius: 1rem;
   padding: 0.85rem 1.25rem;
   display: flex;
   align-items: center;
@@ -173,8 +173,8 @@ const emit = defineEmits([CLOSE_HELP])
 }
 
 .luck-emoji-wrapper {
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;

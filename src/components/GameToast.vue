@@ -34,7 +34,7 @@ defineProps<{
   color: var(--color-white);
 
   padding: 0.75rem 1.5rem;
-  border-radius: 50px;
+  border-radius: 3.125rem;
 
   font-weight: 600;
   font-size: 0.95rem;
@@ -47,7 +47,7 @@ defineProps<{
 .toast-enter-from,
 .toast-leave-to {
   opacity: 0;
-  transform: translate(-50%, -20px);
+  transform: translate(-50%, -1.25rem);
 }
 
 .toast-enter-to,

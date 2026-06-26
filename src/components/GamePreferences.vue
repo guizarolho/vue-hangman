@@ -96,11 +96,11 @@ function updateSettings(mode: boolean, value: boolean) {
   background: var(--color-white);
   border: 1px solid var(--bg-outline);
   width: 90%;
-  max-width: 420px;
-  border-radius: 24px;
+  max-width: 26.25rem;
+  border-radius: 1.5rem;
   box-shadow:
-    0 20px 25px -5px var(--box-shadow-primary),
-    0 10px 10px -5px var(--box-shadow-secondary);
+    0 1.25rem 1.625rem -0.25rem var(--box-shadow-primary),
+    0 0.625rem 0.625rem -0.25rem var(--box-shadow-secondary);
   overflow: hidden;
 }
 
@@ -124,8 +124,8 @@ function updateSettings(mode: boolean, value: boolean) {
   font-size: 0.9rem;
   color: var(--text-secondary);
   cursor: pointer;
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -153,7 +153,7 @@ function updateSettings(mode: boolean, value: boolean) {
   padding: 0.85rem 1.15rem;
   background: var(--bg-secondary);
   border: 1px solid var(--bg-outline);
-  border-radius: 16px;
+  border-radius: 1rem;
   cursor: pointer;
   text-align: left;
   transition: all 0.2s ease-in-out;
@@ -177,9 +177,9 @@ function updateSettings(mode: boolean, value: boolean) {
 }
 
 .option-icon-wrapper {
-  width: 38px;
-  height: 38px;
-  border-radius: 12px;
+  width: 2.375rem;
+  height: 2.375rem;
+  border-radius: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -16,11 +16,11 @@ defineProps<{
   display: flex;
   justify-content: flex-start;
 
-  width: 40px;
-  height: 20px;
-  margin: 10px;
+  width: 2.5rem;
+  height: 1.25rem;
+  margin: 0.625rem;
   border: 0.2rem solid var(--slider-off);
-  border-radius: 100px;
+  border-radius: 6.25rem;
   background: var(--slider-off);
   transition: all 0.3s ease-in-out;
 }
@@ -37,14 +37,14 @@ defineProps<{
 .slider__marker {
   width: 50%;
   height: 100%;
-  border-radius: 100px;
+  border-radius: 6.25rem;
   background: var(--bg-primary);
 }
 
 .slider__spacer {
   width: 0%;
   height: 100%;
-  border-radius: 100px;
+  border-radius: 6.25rem;
 
   transition: width 0.3s ease;
 }

@@ -96,7 +96,7 @@ function copyText(button: HTMLButtonElement) {
   width: 100vw;
   height: 100vh;
   background-color: var(--bg-blur);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(0.5rem);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,12 +107,12 @@ function copyText(button: HTMLButtonElement) {
   background: var(--color-white);
   border: 1px solid var(--bg-outline);
   width: 90%;
-  max-width: 400px;
-  border-radius: 28px;
-  box-shadow: 0 25px 50px -12px var(--box-shadow-primary);
+  max-width: 25rem;
+  border-radius: 1.75rem;
+  box-shadow: 0 1.625rem 3.125rem -0.75rem var(--box-shadow-primary);
   position: relative;
   overflow: hidden;
-  border-top: 10px solid;
+  border-top: 0.625rem solid;
 }
 
 .gameover-container--victory {
@@ -131,8 +131,8 @@ function copyText(button: HTMLButtonElement) {
   font-size: 0.85rem;
   color: var(--text-secondary);
   cursor: pointer;
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -174,7 +174,7 @@ function copyText(button: HTMLButtonElement) {
   color: var(--text-secondary);
   margin: 0 0 2rem 0;
   line-height: 1.5;
-  max-width: 280px;
+  max-width: 12.5rem;
 }
 
 .gameover-actions {
@@ -184,7 +184,7 @@ function copyText(button: HTMLButtonElement) {
 .btn-share {
   width: 100%;
   padding: 1rem 1.5rem;
-  border-radius: 16px;
+  border-radius: 1rem;
   font-size: 1.05rem;
   font-weight: 700;
   cursor: pointer;
@@ -198,23 +198,23 @@ function copyText(button: HTMLButtonElement) {
 .btn-share--victory {
   background-color: var(--color-success);
   color: var(--color-white);
-  box-shadow: 0 10px 15px -3px var(--color-success-shadow);
+  box-shadow: 0 0.625rem 1rem -0.25rem var(--color-success-shadow);
 }
 .btn-share--victory:hover {
   background-color: var(--color-success-light);
   transform: translateY(-2px);
-  box-shadow: 0 12px 20px -3px var(--color-success-shadow);
+  box-shadow: 0 0.75rem 1.25rem -0.25rem var(--color-success-shadow);
 }
 
 .btn-share--defeat {
   background-color: var(--color-error);
   color: var(--color-white);
-  box-shadow: 0 10px 15px -3px var(--color-error-shadow);
+  box-shadow: 0 0.625rem 1rem -0.25rem var(--color-error-shadow);
 }
 .btn-share--defeat:hover {
   background-color: var(--color-error-light);
   transform: translateY(-2px);
-  box-shadow: 0 12px 20px -3px var(--color-error-shadow);
+  box-shadow: 0 0.75rem 1.25rem -0.25rem var(--color-error-shadow);
 }
 
 .btn-share.btn--success {
@@ -256,7 +256,7 @@ function copyText(button: HTMLButtonElement) {
   background: var(--bg-primary);
   border: 1px solid var(--bg-outline);
   padding: 0.75rem 2rem;
-  border-radius: 12px;
+  border-radius: 0.75rem;
   font-weight: 700;
 }
 

@@ -64,7 +64,7 @@ const gameStats = gameManager.getStats()
   width: 100vw;
   height: 100vh;
   background-color: var(--bg-blur);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(0.5rem);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,11 +75,11 @@ const gameStats = gameManager.getStats()
   background: var(--color-white);
   border: 1px solid var(--bg-outline);
   width: 90%;
-  max-width: 420px;
-  border-radius: 24px;
+  max-width: 26.25rem;
+  border-radius: 1.5rem;
   box-shadow:
-    0 20px 25px -5px var(--box-shadow-primary),
-    0 10px 10px -5px var(--box-shadow-secondary);
+    0 1.25rem 1.625rem -0.25rem var(--box-shadow-primary),
+    0 0.625rem 0.625rem -0.25rem var(--box-shadow-secondary);
   overflow: hidden;
 }
 
@@ -103,8 +103,8 @@ const gameStats = gameManager.getStats()
   font-size: 0.9rem;
   color: var(--text-secondary);
   cursor: pointer;
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -134,7 +134,7 @@ const gameStats = gameManager.getStats()
   background: var(--bg-primary);
   border: 1px solid var(--bg-outline);
   padding: 1rem 0.5rem;
-  border-radius: 16px;
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -176,7 +176,7 @@ const gameStats = gameManager.getStats()
   align-items: center;
   background: var(--bg-primary);
   padding: 0.85rem 1.25rem;
-  border-radius: 14px;
+  border-radius: 1rem;
   border: 1px solid var(--bg-outline);
 }
 

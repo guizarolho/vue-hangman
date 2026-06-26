@@ -32,8 +32,8 @@ const props = defineProps<{
 .game-tile__card {
   position: relative;
 
-  width: 100px;
-  height: 100px;
+  width: 6.25rem;
+  height: 6.25rem;
 
   transform-style: preserve-3d;
   transition: transform 0.8s ease-in-out;
@@ -51,7 +51,7 @@ const props = defineProps<{
   justify-content: center;
   align-items: center;
 
-  border-radius: 10px;
+  border-radius: 0.625rem;
 
   font-size: 4rem;
   font-weight: bold;

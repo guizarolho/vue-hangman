@@ -25,7 +25,7 @@ const gameManager = inject<GameManager>(GAME_MANAGER)
   align-items: center;
   width: 100%;
 
-  margin: 20px;
+  margin: 1.25rem;
 }
 
 .attempts__container span {
@@ -35,6 +35,6 @@ const gameManager = inject<GameManager>(GAME_MANAGER)
 .attempts__container {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 0.625rem;
 }
 </style>

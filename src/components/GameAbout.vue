@@ -54,8 +54,8 @@
 }
 
 .bio__nav {
-  padding: 16px 24px;
-  max-width: 500px;
+  padding: 1rem 1.5rem;
+  max-width: 31.25rem;
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -66,10 +66,10 @@
 .bio__back-link {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.875rem;
   color: var(--text-secondary);
   text-decoration: none;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
   transition: color 0.2s ease;
   width: auto;
@@ -90,29 +90,29 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 16px 40px 16px;
+  padding: 0 1rem 2.5rem 1rem;
 }
 
 .bio__card {
   background: var(--color-white);
   border: 1px solid var(--bg-outline);
   width: 100%;
-  max-width: 440px;
-  padding: 40px 32px;
-  border-radius: 24px;
+  max-width: 27.5rem;
+  padding: 2.5rem 2rem;
+  border-radius: 1.5rem;
   box-shadow:
-    0 10px 25px -5px var(--box-shadow-primary),
-    0 8px 10px -6px var(--box-shadow-secondary);
+    0 0.625rem 1.5rem -4rem var(--box-shadow-primary),
+    0 0.5rem 0.625rem -0.5rem var(--box-shadow-secondary);
   text-align: center;
 }
 
 .image__container {
-  width: 96px;
-  height: 96px;
-  margin: 0 auto 20px auto;
+  width: 6rem;
+  height: 6rem;
+  margin: 0 auto 1.25rem auto;
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 4px 12px var(--box-shadow-primary);
+  box-shadow: 0 0.25rem 0.75rem var(--box-shadow-primary);
   background-color: var(--bg-secondary);
 }
 
@@ -123,15 +123,15 @@
 }
 
 .title__container h1 {
-  font-size: 28px;
+  font-size: 1.75rem;
   font-weight: 800;
   color: var(--text-primary);
-  margin: 0 0 16px 0;
+  margin: 0 0 1rem 0;
   letter-spacing: -0.5px;
 }
 
 .content__container .content {
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.6;
   color: var(--text-primary);
   margin: 0;
@@ -149,34 +149,34 @@
 .divider {
   border: none;
   border-top: 1px solid var(--bg-outline);
-  margin: 28px 0;
+  margin: 1.75rem 0;
 }
 
 .disclaimer__container {
   background-color: var(--bg-primary);
   border: 1px solid var(--bg-outline);
-  padding: 16px;
-  border-radius: 12px;
-  margin-bottom: 28px;
+  padding: 1.75rem;
+  border-radius: 0.75rem;
+  margin-bottom: 1.75rem;
 }
 
 .disclaimer__title {
-  font-size: 13px;
+  font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: var(--text-secondary);
-  margin: 0 0 6px 0;
+  margin: 0 0 0.375rem 0;
   font-weight: 700;
 }
 
 .disclaimer {
-  font-size: 13px;
+  font-size: 0.875rem;
   line-height: 1.5;
   color: var(--text-secondary);
 }
 
 .footer__container .copyright {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: var(--text-secondary);
   line-height: 1.5;
 }
