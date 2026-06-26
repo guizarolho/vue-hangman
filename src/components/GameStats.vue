@@ -188,6 +188,7 @@ const gameStats = gameManager.getStats()
 .streak-number {
   font-size: 1.1rem;
   font-weight: 700;
+  color: var(--text-primary);
 }
 
 .fade-enter-active,

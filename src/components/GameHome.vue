@@ -14,7 +14,7 @@ import GameStats from './GameStats.vue'
 import GameAttempts from './GameAttempts.vue'
 import GameToast from './GameToast.vue'
 
-// const secretWord = 'FAKER'
+// const secretWord = 'SABOR'
 const secretWord = getDailyWord()
 const gameManager = new GameManager(secretWord ?? '')
 const settingsManager = new GameSettingsManager(document.documentElement)
@@ -84,8 +84,6 @@ provide(GAME_SETTINGS, settingsManager)
 *::before,
 *::after {
   box-sizing: border-box;
-  width: 100%;
-  height: 100%;
   margin: 0;
   padding: 0;
 
@@ -96,15 +94,15 @@ provide(GAME_SETTINGS, settingsManager)
 .game__container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
 
+  padding-top: 5rem;
+
   background-color: var(--color-white);
   width: 100%;
-  height: 100%;
-  padding-top: 30px;
-  padding-bottom: 60px;
+  min-height: 91.5vh;
 }
 
 .word__container {
@@ -112,9 +110,8 @@ provide(GAME_SETTINGS, settingsManager)
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 40%;
-
-  margin-top: 30px;
-  margin-bottom: 30px;
+  gap: 12px;
+  width: 100%;
+  max-width: 500px;
 }
 </style>

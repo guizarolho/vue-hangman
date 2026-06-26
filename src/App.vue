@@ -1,6 +1,7 @@
 <template>
   <RouterView />
 </template>
+
 <style>
 :root {
   --color-success: green;
@@ -18,6 +19,7 @@
 
   --keyboard: #818384;
   --keyboard-hover: #9a9c9d;
+  --keyboard-highlight-text: black;
 
   --bg-primary: #f8fafc;
   --bg-outline: #e2e8f0;
@@ -51,6 +53,7 @@
 
   --keyboard: #475569;
   --keyboard-hover: #64748b;
+  --keyboard-highlight-text: black;
 
   --bg-primary: #0f172a;
   --bg-outline: #334155;
@@ -82,8 +85,9 @@
   --color-white: #000000;
   --color-black: #ffffff;
 
-  --keyboard: #000000;
+  --keyboard: #ffffff;
   --keyboard-hover: #ffff00;
+  --keyboard-highlight-text: black;
 
   --bg-primary: #000000;
   --bg-outline: #ffffff;
@@ -99,5 +103,39 @@
 
   --slider-on: #ffffff;
   --slider-off: #000000;
+}
+
+.dark.high-contrast {
+  --color-success: #00ff00;
+  --color-success-light: #00ff00;
+  --color-sucess-shadow: transparent;
+
+  --color-error: #ff0000;
+  --color-error-light: #ff0000;
+  --color-error-shadow: transparent;
+
+  --color-selection: #ffff00;
+
+  --color-white: #1e293b;
+  --color-black: #f8fafc;
+
+  --keyboard: #475569;
+  --keyboard-hover: #64748b;
+  --keyboard-highlight-text: black;
+
+  --bg-primary: #0f172a;
+  --bg-outline: #334155;
+  --bg-secondary: #1e293b;
+  --bg-hover: #334155;
+  --bg-blur: rgba(0, 0, 0, 0.7);
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+
+  --box-shadow-primary: rgba(0, 0, 0, 0.3);
+  --box-shadow-secondary: rgba(0, 0, 0, 0.15);
+
+  --slider-on: #065f46;
+  --slider-off: #7f1d1d;
 }
 </style>

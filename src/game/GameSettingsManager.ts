@@ -44,5 +44,8 @@ export class GameSettingsManager {
 
     this.gamePrefs.darkMode = prefs.darkMode
     this.gamePrefs.highContrastMode = prefs.highContrastMode
+
+    this.root.classList.toggle('dark', prefs.darkMode)
+    this.root.classList.toggle('high-contrast', prefs.highContrastMode)
   }
 }
