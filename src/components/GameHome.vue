@@ -104,6 +104,6 @@ provide(GAME_SETTINGS, settingsManager)
   padding: 3rem 1rem 0;
   gap: 0.75rem;
   width: 100%;
-  max-width: 31.25rem;
+  max-width: 40rem;
 }
 </style>
