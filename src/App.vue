@@ -17,7 +17,7 @@
 :root {
   --color-success: green;
   --color-success-light: #10b981;
-  --color-sucess-shadow: rgba(16, 185, 129, 0.4);
+  --color-success-shadow: rgba(16, 185, 129, 0.4);
 
   --color-error: red;
   --color-error-light: #ef4444;
@@ -52,7 +52,7 @@
 .dark {
   --color-success: #10b981;
   --color-success-light: #059669;
-  --color-sucess-shadow: rgba(16, 185, 129, 0.2);
+  --color-success-shadow: rgba(16, 185, 129, 0.2);
 
   --color-error: #ef4444;
   --color-error-light: #dc2626;
@@ -87,7 +87,7 @@
 .high-contrast {
   --color-success: #00ff00;
   --color-success-light: #00ff00;
-  --color-sucess-shadow: transparent;
+  --color-success-shadow: transparent;
 
   --color-error: #ff0000;
   --color-error-light: #ff0000;
@@ -122,7 +122,7 @@
 .dark.high-contrast {
   --color-success: #00ff00;
   --color-success-light: #00ff00;
-  --color-sucess-shadow: transparent;
+  --color-success-shadow: transparent;
 
   --color-error: #ff0000;
   --color-error-light: #ff0000;
