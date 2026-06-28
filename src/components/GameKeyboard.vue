@@ -120,7 +120,7 @@ onUnmounted(() => {
   width: 100%;
   max-width: 40rem;
   margin: 1rem auto 2rem auto;
-  padding: 0 1rem;
+  padding: 0 1rem 2rem;
 }
 
 .keyboard__row {
