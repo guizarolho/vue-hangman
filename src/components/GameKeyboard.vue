@@ -119,7 +119,7 @@ onUnmounted(() => {
   align-items: center;
   width: 100%;
   max-width: 40rem;
-  margin: 1rem auto 2rem auto;
+  margin: 1rem auto 1rem auto;
   padding: 0 1rem 2rem;
 }
 
