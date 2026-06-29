@@ -45,8 +45,8 @@
 .bio__wrapper {
   height: 100%;
   width: 100%;
-  min-height: 100vh;
-  min-width: 100vw;
+  min-height: 100dvh;
+  min-width: 100dvw;
   background-color: var(--bg-primary);
   font-family: sans-serif;
   color: var(--text-primary);
